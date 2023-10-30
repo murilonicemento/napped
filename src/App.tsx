@@ -3,7 +3,7 @@ import { Register } from "./pages/Register.tsx";
 
 export function App() {
   return (
-    <div className="h-screen w-screen bg-dark-20 font-archivo">
+    <div className="h-screen w-screen bg-dark-20 font-rubik">
       <BrowserRouter>
         <Routes>
           <Route path="/register" element={<Register />} />
