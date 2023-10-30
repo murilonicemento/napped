@@ -1,9 +1,14 @@
-import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Register } from "./pages/Register.tsx";
 
 export function App() {
   return (
-    <div className="bg-dark-10 h-screen text-blue flex justify-center items-center border-4">
-      Hello world
+    <div className="h-screen w-screen bg-dark-20">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
