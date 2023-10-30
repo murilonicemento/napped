@@ -6,9 +6,10 @@ export default {
   ],
   theme: {
     extend: {},
-    fontFamily: { "archivo": ["Archivo", "monospace", "sans-serif"] },
+    fontFamily: { "rubik": ["Rubik", "monospace", "sans-serif"] },
     colors: {
       "brand": "#00A3FF",
+      "dark-blue": "#0054C6",
       "dark-10": "#1A191E",
       "dark-20": "#09090B",
       "dark-30": "#151B26",
