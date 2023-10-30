@@ -17,7 +17,8 @@ export default {
       "green": "#0BB07B",
       "warning": "#FFCE52",
       "error": "#F03D3D",
-      "information": "#E0E0E0"
+      "information": "#E0E0E0",
+      "text": "#FEFBFB"
     }
   },
   plugins: [],
