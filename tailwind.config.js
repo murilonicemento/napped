@@ -20,6 +20,10 @@ export default {
       "error": "#F03D3D",
       "information": "#E0E0E0",
       "text": "#FEFBFB"
+    },
+    backgroundImage: {
+      "user": "url('./assets/user.svg')",
+      "footer-texture": "url('/img/footer-texture.png')",
     }
   },
   plugins: [],
