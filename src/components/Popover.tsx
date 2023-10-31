@@ -5,6 +5,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 export function PopAnchor() {
   return (
@@ -25,12 +26,12 @@ export function PopAnchor() {
             <li className="cursor-pointer">Animes</li>
             <li className="cursor-pointer">Jogos</li>
           </ul>
-          <a
-            href="/login"
+          <Link
+            to="/login"
             className="text-text bg-gradient-to-b from-brand to-dark-blue w-36 flex justify-center border rounded border-none p-2"
           >
             Minha Conta
-          </a>
+          </Link>
         </PopoverBody>
       </PopoverContent>
     </Popover>
