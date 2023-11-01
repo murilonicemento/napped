@@ -19,7 +19,7 @@ export default {
       "warning": "#FFCE52",
       "error": "#F03D3D",
       "information": "#E0E0E0",
-      "text": "#FEFBFB"
+      "white": "#FEFBFB"
     },
     backgroundImage: {
       "user": "url('./src/assets/user.svg')",
