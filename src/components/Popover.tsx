@@ -20,15 +20,25 @@ export function PopAnchor() {
       <PopoverContent>
         <PopoverBody className="w-80 mt-16 border border-none rounded-xl bg-dark-10 p-4">
           <ul className="flex flex-col gap-4 text-text mb-4">
-            <li className="cursor-pointer">Início</li>
-            <li className="cursor-pointer">Séries</li>
-            <li className="cursor-pointer">Filmes</li>
-            <li className="cursor-pointer">Animes</li>
-            <li className="cursor-pointer">Jogos</li>
+            <li className="cursor-pointer hover:text-dark-blue transition-colors">
+              Início
+            </li>
+            <li className="cursor-pointer hover:text-dark-blue transition-colors">
+              Séries
+            </li>
+            <li className="cursor-pointer hover:text-dark-blue transition-colors">
+              Filmes
+            </li>
+            <li className="cursor-pointer hover:text-dark-blue transition-colors">
+              Animes
+            </li>
+            <li className="cursor-pointer hover:text-dark-blue transition-colors">
+              Jogos
+            </li>
           </ul>
           <Link
             to="/login"
-            className="text-text bg-gradient-to-b from-brand to-dark-blue w-36 flex justify-center border rounded border-none p-2"
+            className="text-text bg-gradient-to-b from-brand to-dark-blue w-36 flex justify-center border rounded border-none p-2 hover:text-dark-blue transition-colors"
           >
             Minha Conta
           </Link>
