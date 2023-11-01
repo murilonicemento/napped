@@ -22,8 +22,12 @@ export default {
       "text": "#FEFBFB"
     },
     backgroundImage: {
-      "user": "url('./assets/user.svg')",
-      "footer-texture": "url('/img/footer-texture.png')",
+      "user": "url('./src/assets/user.svg')",
+      "at-sign": "url('./src/assets/at-sign.svg')",
+      "lock": "url('./src/assets/lock.svg')",
+    },
+    backgroundPosition: {
+      left: "8px"
     }
   },
   plugins: [],
