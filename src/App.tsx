@@ -4,13 +4,22 @@ import { Register } from "./pages/Register.tsx";
 
 export function App() {
   return (
-    <div className="h-screen w-screen bg-dark-20 font-rubik">
+    <>
       <BrowserRouter>
         <Routes>
           <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
-      <Toaster />
-    </div>
+      <Toaster
+        toastOptions={{
+          duration: 3000,
+          position: "top-center",
+          style: {
+            backgroundColor: "#151B26",
+            color: "#FEFBFB",
+          },
+        }}
+      />
+    </>
   );
 }
