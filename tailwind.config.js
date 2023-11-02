@@ -21,11 +21,6 @@ export default {
       "information": "#E0E0E0",
       "white": "#FEFBFB"
     },
-    backgroundImage: {
-      "user": "url('./src/assets/user.svg')",
-      "at-sign": "url('./src/assets/at-sign.svg')",
-      "lock": "url('./src/assets/lock.svg')",
-    },
     backgroundPosition: {
       left: "8px"
     }
