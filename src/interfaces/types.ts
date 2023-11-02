@@ -1,8 +1,6 @@
-export interface InputProps {
-  type: string;
+export interface FormProps {
   name: string;
-  value: string;
-  set: (args: any) => string;
-  placeholder: string;
-  errorMessage: string;
+  email: string;
+  password: string;
+  passwordRepeat: string;
 }
