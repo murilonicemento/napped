@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
@@ -8,7 +9,7 @@ export function Form() {
   const [password, setPassword] = useState<string>("");
   const [passwordRepeat, setPasswordRepeat] = useState<string>("");
 
-  function handleSubmit(event: { preventDefault: () => void }) {
+  async function handleSubmit(event: { preventDefault: () => void }) {
     event?.preventDefault();
 
     if (
@@ -37,6 +38,22 @@ export function Form() {
         },
       });
     }
+
+    const data = await axios.post(
+      "http://localhost:8080/api/register",
+      {
+        name,
+        email,
+        password,
+      },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    console.log(data);
   }
 
   return (
