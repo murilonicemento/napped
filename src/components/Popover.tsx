@@ -19,23 +19,38 @@ export function PopAnchor() {
       </PopoverTrigger>
       <PopoverContent>
         <PopoverBody className="w-80 mt-16 border border-none rounded-xl bg-dark-10 p-4">
-          <ul className="flex flex-col gap-4 text-white mb-4">
-            <li className="cursor-pointer hover:text-dark-blue transition-colors">
+          <nav className="flex flex-col gap-4 text-white mb-4">
+            <Link
+              to="/"
+              className="cursor-pointer hover:text-dark-blue transition-colors"
+            >
               Início
-            </li>
-            <li className="cursor-pointer hover:text-dark-blue transition-colors">
+            </Link>
+            <Link
+              to="/series"
+              className="cursor-pointer hover:text-dark-blue transition-colors"
+            >
               Séries
-            </li>
-            <li className="cursor-pointer hover:text-dark-blue transition-colors">
+            </Link>
+            <Link
+              to="/movies"
+              className="cursor-pointer hover:text-dark-blue transition-colors"
+            >
               Filmes
-            </li>
-            <li className="cursor-pointer hover:text-dark-blue transition-colors">
+            </Link>
+            <Link
+              to="/animes"
+              className="cursor-pointer hover:text-dark-blue transition-colors"
+            >
               Animes
-            </li>
-            <li className="cursor-pointer hover:text-dark-blue transition-colors">
+            </Link>
+            <Link
+              to="/games"
+              className="cursor-pointer hover:text-dark-blue transition-colors"
+            >
               Jogos
-            </li>
-          </ul>
+            </Link>
+          </nav>
           <Link
             to="/login"
             className="text-white bg-gradient-to-b from-brand to-dark-blue w-36 flex justify-center border rounded border-none p-2 hover:text-dark-blue transition-colors"
