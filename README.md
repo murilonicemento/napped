@@ -25,7 +25,7 @@ Antes de iniciar, certifique-se de ter o [PNPM](https://pnpm.io) instalado em su
 3. Instale as dependências:
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 ## Uso
