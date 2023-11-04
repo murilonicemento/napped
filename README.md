@@ -1,27 +1,55 @@
-# React + TypeScript + Vite
+# Napped - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bem-vindo ao frontend do projeto Napped, uma fonte de informações sobre o mundo nerd e outros assuntos relacionados.
 
-Currently, two official plugins are available:
+## Descrição
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O frontend é construído com React e TypeScript para proporcionar uma experiência de usuário moderna e responsiva. Este projeto consome uma API desenvolvida com o Slim Framework.
 
-## Expanding the ESLint configuration
+## Configuração
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Antes de iniciar, certifique-se de ter o [PNPM](https://pnpm.io) instalado em sua máquina.
 
-- Configure the top-level `parserOptions` property like this:
+1. Clone este repositório:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+   ```bash
+   git clone https://github.com/murilonicemento/napped.git
+   ```
+
+2. Navegue até o diretório do projeto:
+
+   ```bash
+   git clone https://github.com/murilonicemento/napped.git
+   ```
+
+3. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+## Uso
+
+Para iniciar o servidor de desenvolvimento, use o seguinte comando:
+
+```bash
+pnpm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Isso abrirá a aplicação em <http://localhost:5173> no seu navegador padrão.
+
+## Estrutura de Pastas
+
+- src/: Contém o código-fonte do projeto.
+- components/: Componentes React reutilizáveis.
+- pages/: Páginas específicas da aplicação.
+- services/: Funções ou classes para interagir com a API.
+- utils/: Utilitários diversos.
+
+## Contribuição
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues, propor melhorias ou enviar pull requests.
+
+## Licença
+
+Este projeto é licenciado sob a [LICENSE](LICENSE).
