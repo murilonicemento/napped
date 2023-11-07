@@ -21,3 +21,12 @@ export interface ErrorAPI {
   };
   statusCode: number;
 }
+
+export interface ImageProps {
+  imageURL: string;
+  title: string;
+  subtitle?: string;
+  description: string;
+}
+
+export interface CardProps extends ImageProps {}
