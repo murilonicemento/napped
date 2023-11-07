@@ -14,6 +14,8 @@ export default {
       "dark-20": "#09090B",
       "dark-30": "#151B26",
       "dark-40": "#A3A3A3",
+      "gradient-image-to": "rgba(9, 9, 11, 0.10)",
+      "gradient-image-from": "rgba(9, 9, 11, 1)",
       "blue": "#2962FF",
       "green": "#0BB07B",
       "warning": "#FFCE52",
