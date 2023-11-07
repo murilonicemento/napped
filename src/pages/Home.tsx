@@ -1,5 +1,8 @@
+import tanjiro from "../assets/tanjiro.svg";
 import viking from "../assets/viking.jpg";
+import { Card } from "../components/Card";
 import { Header } from "../components/Header";
+import { Image } from "../components/Image";
 
 export function Home() {
   return (
@@ -14,23 +17,55 @@ export function Home() {
         </p>
       </div>
       <main className="mt-12">
-        <section className="w-10/12 h-96 m-auto flex border border-solid border-brand">
-          <img src={viking} alt="" className="w-full" />
-          <div className="grid place-items-center">
-            {/* <img src={viking} alt="" className="" /> */}
-            {/* <img src={viking} alt="" className="" /> */}
+        <section className="w-10/12 m-auto flex flex-col gap-4">
+          <Image
+            imageURL={viking}
+            title="Séries"
+            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet."
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi."
+          />
+          <div className="flex flex-col gap-4">
+            <Image
+              imageURL={viking}
+              title="Séries"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi."
+            />
+            <Image
+              imageURL={viking}
+              title="Séries"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi."
+            />
           </div>
         </section>
-        <section>
-          <h2>Notícias mais recentes</h2>
-          <div>
-            <img src={viking} alt="" />
-            <img src={viking} alt="" />
-            <img src={viking} alt="" />
-          </div>
+        <section className="w-10/12 flex flex-col gap-8 m-auto mt-28">
+          <h2 className="text-white text-xl mb-12">Notícias mais recentes</h2>
+          <Card
+            imageURL={tanjiro}
+            title="Séries"
+            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet."
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi."
+          />
+          <Card
+            imageURL={tanjiro}
+            title="Séries"
+            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet."
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi."
+          />
+          <Card
+            imageURL={tanjiro}
+            title="Séries"
+            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet."
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi."
+          />
+          <Card
+            imageURL={tanjiro}
+            title="Séries"
+            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet."
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi."
+          />
         </section>
-        <section>
-          <h2>Lançamentos</h2>
+        <section className="w-10/12 m-auto mt-28">
+          <h2 className="text-white text-xl mb-12">Lançamentos</h2>
           <div>
             <span></span>
             <span></span>
