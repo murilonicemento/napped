@@ -1,8 +1,9 @@
 import tanjiro from "../assets/tanjiro.svg";
 import viking from "../assets/viking.jpg";
-import { Card } from "../components/Card";
 import { Header } from "../components/Header";
 import { Image } from "../components/Image";
+import { LatestNewsCard } from "../components/LatestNewsCard";
+import { ReleaseCard } from "../components/ReleaseCard";
 
 export function Home() {
   return (
@@ -39,25 +40,25 @@ export function Home() {
         </section>
         <section className="w-10/12 flex flex-col gap-8 m-auto mt-28">
           <h2 className="text-white text-xl mb-12">Notícias mais recentes</h2>
-          <Card
+          <LatestNewsCard
             imageURL={tanjiro}
             title="Séries"
             subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet."
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi."
           />
-          <Card
+          <LatestNewsCard
             imageURL={tanjiro}
             title="Séries"
             subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet."
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi."
           />
-          <Card
+          <LatestNewsCard
             imageURL={tanjiro}
             title="Séries"
             subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet."
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi."
           />
-          <Card
+          <LatestNewsCard
             imageURL={tanjiro}
             title="Séries"
             subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet."
@@ -66,9 +67,22 @@ export function Home() {
         </section>
         <section className="w-10/12 m-auto mt-28">
           <h2 className="text-white text-xl mb-12">Lançamentos</h2>
-          <div>
-            <span></span>
-            <span></span>
+          <div className="flex flex-col gap-8">
+            <ReleaseCard
+              type="Filmes"
+              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare urna pharetra ut ac, pellentesque. "
+            />
+            <ReleaseCard
+              type="Filmes"
+              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare urna pharetra ut ac, pellentesque. "
+            />
+            <ReleaseCard
+              type="Filmes"
+              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare urna pharetra ut ac, pellentesque. "
+            />
           </div>
         </section>
       </main>
