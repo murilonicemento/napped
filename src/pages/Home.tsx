@@ -1,5 +1,6 @@
 import tanjiro from "../assets/tanjiro.svg";
 import viking from "../assets/viking.jpg";
+import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { Image } from "../components/Image";
 import { LatestNewsCard } from "../components/LatestNewsCard";
@@ -86,6 +87,7 @@ export function Home() {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }
