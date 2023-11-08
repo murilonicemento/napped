@@ -29,4 +29,10 @@ export interface ImageProps {
   description: string;
 }
 
-export interface CardProps extends ImageProps {}
+export interface LatestNewsCardProps extends ImageProps {}
+
+export interface ReleaseCardProps {
+  type: string;
+  title: string;
+  description: string;
+}
