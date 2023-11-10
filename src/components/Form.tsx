@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import { DataAPI, ErrorAPI } from "../interfaces/types";
+import { DataAPI, ErrorAPI } from "../utils/types";
 
 export function Form() {
   const [name, setName] = useState<string>("");
