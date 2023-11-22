@@ -2,6 +2,7 @@ import { Toaster } from "react-hot-toast";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthProvider.tsx";
 import { RequireAuth } from "./context/RequireAuth.tsx";
+import { Login } from "./pages/Login.tsx";
 import { NotFound } from "./pages/NotFound.jsx";
 import { Register } from "./pages/Register.tsx";
 import { Animes } from "./pages/privates/Animes.tsx";
@@ -16,6 +17,8 @@ export function App() {
       <AuthProvider>
         <BrowserRouter>
           <Routes>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
             <Route
               path="/"
               element={
@@ -56,7 +59,6 @@ export function App() {
                 </RequireAuth>
               }
             />
-            <Route path="/register" element={<Register />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
