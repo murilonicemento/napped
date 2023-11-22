@@ -1,24 +1,26 @@
+import { AxiosError } from "axios";
 import { ReactNode, useEffect, useState } from "react";
 import { useApi } from "../hooks/useApi";
+import { ErrorAPI } from "../utils/types";
 import { AuthContext } from "./AuthContext";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState(null);
   const api = useApi();
 
-  useEffect(() => {
-    const validateToken = async () => {
-      try {
-        const storageData = localStorage.getItem("authToken");
-        const data = await api.validateToken(storageData);
+  // useEffect(() => {
+  //   const validateToken = async () => {
+  //     try {
+  //       const storageData = localStorage.getItem("authToken");
+  //       const data = await api.validateToken(storageData);
 
-        if (data.user) setUser(data.user);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    validateToken();
-  }, [api]);
+  //       if (data.user) setUser(data.user);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   validateToken();
+  // }, [api]);
 
   const setToken = (token: string) => localStorage.setItem("authToken", token);
 
@@ -28,6 +30,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     await api.signOut();
     setUser(null);
     removeToken();
+  };
+
+  const register = async (name: string, email: string, password: string) => {
+    try {
+      const data = await api.register(name, email, password);
+
+      if (data.user && data.statusCode === 201) return true;
+    } catch (error) {
+      const data = (error as AxiosError<ErrorAPI>).response?.data;
+      const message = data?.error.message;
+
+      return message;
+    }
   };
 
   const login = async (email: string, password: string) => {
@@ -51,6 +66,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       value={{
         user,
         login,
+        register,
         signOut,
       }}
     >
