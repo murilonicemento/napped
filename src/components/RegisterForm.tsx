@@ -1,9 +1,9 @@
 import axios, { AxiosError } from "axios";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
-import { DataAPI, ErrorAPI } from "../utils/types";
+// import { AuthContext } from "../context/AuthContext";
+import { RegisterDataAPI, RegisterErrorAPI } from "../utils/types";
 
 export function RegisterForm() {
   const [name, setName] = useState<string>("");
@@ -11,7 +11,7 @@ export function RegisterForm() {
   const [password, setPassword] = useState<string>("");
   const [passwordRepeat, setPasswordRepeat] = useState<string>("");
   const navigate = useNavigate();
-  const auth = useContext(AuthContext);
+  // const auth = useContext(AuthContext);
 
   function handlePaste(event: { preventDefault: () => void }) {
     event.preventDefault();
@@ -63,7 +63,7 @@ export function RegisterForm() {
 
     try {
       const toastId = toast.loading("Criando usuário...");
-      const { data } = await axios.post<DataAPI>(
+      const { data } = await axios.post<RegisterDataAPI>(
         "http://localhost:8080/api/register",
         {
           name,
@@ -90,7 +90,7 @@ export function RegisterForm() {
 
       return setTimeout(() => navigate("/login"), 2200);
     } catch (error) {
-      const data = (error as AxiosError<ErrorAPI>).response?.data;
+      const data = (error as AxiosError<RegisterErrorAPI>).response?.data;
       const message = data?.error.message;
 
       return toast.error(`${message}`);

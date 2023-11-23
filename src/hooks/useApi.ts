@@ -1,14 +1,14 @@
 import { api } from "../services/api";
-import { DataAPI } from "../utils/types";
+import { RegisterDataAPI } from "../utils/types";
 
 export const useApi = () => ({
-  validateToken: async (token: string | null) => {
+  validateToken: async (token: string) => {
     const response = await api.post("/validate", { token });
 
     return response.data;
   },
   register: async (name: string, email: string, password: string) => {
-    const { data } = await api.post<DataAPI>(
+    const { data } = await api.post<RegisterDataAPI>(
       "/register",
       {
         name,
@@ -38,7 +38,7 @@ export const useApi = () => ({
     return response.data;
   },
   signOut: async () => {
-    const response = await api.post("/api/logout");
+    const response = await api.post("/signOut");
 
     return response.data;
   },
