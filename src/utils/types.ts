@@ -5,7 +5,7 @@ export interface FormProps {
   passwordRepeat: string;
 }
 
-export interface DataAPI {
+export interface RegisterDataAPI {
   user: {
     id: number;
     name: string;
@@ -15,12 +15,27 @@ export interface DataAPI {
   statusCode: number;
 }
 
-export interface ErrorAPI {
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  access_token: string;
+}
+
+export interface RegisterErrorAPI {
   error: {
     message: string;
   };
   statusCode: number;
 }
+
+export type AuthContextType = {
+  user: User | null;
+  register: (name: string, email: string, password: string) => Promise<boolean>;
+  login: (email: string, password: string) => Promise<boolean>;
+  signOut: () => void;
+};
 
 export interface ImageProps {
   imageURL: string;
