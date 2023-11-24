@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import notFound from "../assets/forward.svg";
+import notFound from "../assets/images/forward.svg";
 import { Header } from "../components/Header";
 
 export function NotFound() {

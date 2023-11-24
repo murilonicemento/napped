@@ -1,4 +1,4 @@
-import brandLogo from "../assets/brand-logo.svg";
+import brandLogo from "../assets/images/brand-logo.svg";
 
 export function Footer() {
   return (
