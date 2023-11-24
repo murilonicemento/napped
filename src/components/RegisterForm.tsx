@@ -1,9 +1,9 @@
-import axios, { AxiosError } from "axios";
-import { useState } from "react";
+import { AxiosError } from "axios";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../context/AuthContext";
-import { RegisterDataAPI, RegisterErrorAPI } from "../utils/types";
+import { AuthContext } from "../context/auth/AuthContext";
+import { RegisterErrorAPI } from "../utils/types";
 
 export function RegisterForm() {
   const [name, setName] = useState<string>("");
@@ -11,7 +11,7 @@ export function RegisterForm() {
   const [password, setPassword] = useState<string>("");
   const [passwordRepeat, setPasswordRepeat] = useState<string>("");
   const navigate = useNavigate();
-  // const auth = useContext(AuthContext);
+  const auth = useContext(AuthContext);
 
   function handlePaste(event: { preventDefault: () => void }) {
     event.preventDefault();
@@ -59,36 +59,24 @@ export function RegisterForm() {
 
     if (!validateForm()) return;
 
-    // const isRegistered = await auth.register(name, email, password);
-
     try {
+      const isRegistered = await auth.register(name, email, password);
       const toastId = toast.loading("Criando usuário...");
-      const { data } = await axios.post<RegisterDataAPI>(
-        "http://localhost:8080/api/register",
-        {
-          name,
-          email,
-          password,
-        },
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
 
-      setTimeout(() => {
-        toast.success(data.message, {
-          id: toastId,
-          position: "top-center",
-          style: {
-            backgroundColor: "#151B26",
-            color: "#FEFBFB",
-          },
-        });
-      }, 1300);
+      if (isRegistered) {
+        setTimeout(() => {
+          toast.success("Usuário cadastrado com sucesso.", {
+            id: toastId,
+            position: "top-center",
+            style: {
+              backgroundColor: "#151B26",
+              color: "#FEFBFB",
+            },
+          });
+        }, 1300);
 
-      return setTimeout(() => navigate("/login"), 2200);
+        return setTimeout(() => navigate("/login"), 2200);
+      }
     } catch (error) {
       const data = (error as AxiosError<RegisterErrorAPI>).response?.data;
       const message = data?.error.message;
@@ -115,7 +103,7 @@ export function RegisterForm() {
           placeholder="Digite seu nome"
           value={name}
           onChange={(event) => setName(event.target.value)}
-          className="w-full bg-[url('./src/assets/user.svg')] bg-left bg-no-repeat bg-dark-30 pl-10 pt-2 pb-2 border border-solid rounded-md border-dark-30 text-white placeholder:text-white"
+          className="w-full bg-[url('./src/assets/images/user.svg')] bg-left bg-no-repeat bg-dark-30 pl-10 pt-2 pb-2 border border-solid rounded-md border-dark-30 text-white placeholder:text-white"
         />
       </label>
       <label htmlFor="email" className="w-full">
@@ -126,7 +114,7 @@ export function RegisterForm() {
           placeholder="Digite seu e-mail"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          className="w-full bg-[url('./src/assets/at-sign.svg')] bg-left bg-no-repeat bg-dark-30 pl-10 pt-2 pb-2 border rounded-md border-dark-30 text-white placeholder:text-white"
+          className="w-full bg-[url('./src/assets/images/at-sign.svg')] bg-left bg-no-repeat bg-dark-30 pl-10 pt-2 pb-2 border rounded-md border-dark-30 text-white placeholder:text-white"
         />
       </label>
       <label htmlFor="password" className="w-full">
@@ -137,7 +125,7 @@ export function RegisterForm() {
           placeholder="Digite uma senha"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
-          className="w-full bg-[url('./src/assets/lock.svg')] bg-left bg-no-repeat bg-dark-30 pl-10 pt-2 pb-2 border rounded-md border-dark-30 text-white placeholder:text-white"
+          className="w-full bg-[url('./src/assets/images/lock.svg')] bg-left bg-no-repeat bg-dark-30 pl-10 pt-2 pb-2 border rounded-md border-dark-30 text-white placeholder:text-white"
         />
       </label>
       <label htmlFor="passwordRepeat" className="w-full">
@@ -149,7 +137,7 @@ export function RegisterForm() {
           value={passwordRepeat}
           onChange={(event) => setPasswordRepeat(event.target.value)}
           onPaste={handlePaste}
-          className="w-full bg-[url('./src/assets/lock.svg')] bg-left bg-no-repeat bg-dark-30 pl-10 pt-2 pb-2 border rounded-md border-dark-30 text-white placeholder:text-white"
+          className="w-full bg-[url('./src/assets/images/lock.svg')] bg-left bg-no-repeat bg-dark-30 pl-10 pt-2 pb-2 border rounded-md border-dark-30 text-white placeholder:text-white"
         />
       </label>
 
