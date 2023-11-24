@@ -1,13 +1,10 @@
-import axios, { AxiosError } from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
-import { DataAPI, ErrorAPI } from "../utils/types";
+import { Link } from "react-router-dom";
 
 export function LoginForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const navigate = useNavigate();
 
   function validateForm() {
     let isValid = true;
@@ -25,37 +22,6 @@ export function LoginForm() {
     event.preventDefault();
 
     if (!validateForm()) return;
-
-    try {
-      const { data } = await axios.post<DataAPI>(
-        "http://localhost:8080/api/register",
-        {
-          name,
-          email,
-          password,
-        },
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      toast.success(data.message, {
-        position: "top-center",
-        style: {
-          backgroundColor: "#151B26",
-          color: "#FEFBFB",
-        },
-      });
-
-      return navigate("/home");
-    } catch (error) {
-      const data = (error as AxiosError<ErrorAPI>).response?.data;
-      const message = data?.error.message;
-
-      return toast.error(`${message}`);
-    }
   }
 
   return (
@@ -77,7 +43,7 @@ export function LoginForm() {
           placeholder="Digite seu usuário"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          className="w-full bg-[url('./src/assets/user.svg')] bg-left bg-no-repeat bg-dark-30 pl-10 pt-2 pb-2 border rounded-md border-dark-30 text-white placeholder:text-white"
+          className="w-full bg-[url('./src/assets/images/user.svg')] bg-left bg-no-repeat bg-dark-30 pl-10 pt-2 pb-2 border rounded-md border-dark-30 text-white placeholder:text-white"
         />
       </label>
       <label htmlFor="password" className="w-full">
@@ -88,7 +54,7 @@ export function LoginForm() {
           placeholder="Digite uma senha"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
-          className="w-full bg-[url('./src/assets/lock.svg')] bg-left bg-no-repeat bg-dark-30 pl-10 pt-2 pb-2 border rounded-md border-dark-30 text-white placeholder:text-white"
+          className="w-full bg-[url('./src/assets/images/lock.svg')] bg-left bg-no-repeat bg-dark-30 pl-10 pt-2 pb-2 border rounded-md border-dark-30 text-white placeholder:text-white"
         />
       </label>
 
