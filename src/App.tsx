@@ -1,6 +1,6 @@
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { RequireAuth } from "./context/RequireAuth.tsx";
+import { RequireAuth } from "./context/auth/RequireAuth.tsx";
 import { Login } from "./pages/Login.tsx";
 import { NotFound } from "./pages/NotFound.jsx";
 import { Register } from "./pages/Register.tsx";
