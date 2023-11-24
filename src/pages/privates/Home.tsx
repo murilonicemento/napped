@@ -1,5 +1,5 @@
-import tanjiro from "../../assets/tanjiro.svg";
-import viking from "../../assets/viking.jpg";
+import tanjiro from "../../assets/images/tanjiro.svg";
+import viking from "../../assets/images/viking.jpg";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Image } from "../../components/Image";
