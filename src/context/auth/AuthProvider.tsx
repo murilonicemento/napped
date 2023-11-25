@@ -11,10 +11,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const storageData = localStorage.getItem("authToken");
     if (storageData) {
       const data = await api.validateToken(url, storageData);
-      if (data.user) {
-        setUser(data.user);
-        return true;
-      }
+      return data.success;
     }
 
     return false;

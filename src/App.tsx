@@ -1,6 +1,5 @@
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { RequireAuth } from "./context/auth/RequireAuth.tsx";
 import { Login } from "./pages/Login.tsx";
 import { NotFound } from "./pages/NotFound.jsx";
 import { Register } from "./pages/Register.tsx";
@@ -17,46 +16,11 @@ export function App() {
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route
-            path="/home"
-            element={
-              <RequireAuth>
-                <Home />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/movies"
-            element={
-              <RequireAuth>
-                <Movies />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/series"
-            element={
-              <RequireAuth>
-                <Series />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/animes"
-            element={
-              <RequireAuth>
-                <Animes />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/games"
-            element={
-              <RequireAuth>
-                <Games />
-              </RequireAuth>
-            }
-          />
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/series" element={<Series />} />
+          <Route path="/animes" element={<Animes />} />
+          <Route path="/games" element={<Games />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

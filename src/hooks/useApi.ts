@@ -1,15 +1,15 @@
 import { api } from "../services/api";
-import { LoginDataAPI, RegisterDataAPI } from "../utils/types";
+import { LoginDataAPI, PrivateRoutes, RegisterDataAPI } from "../utils/types";
 
 export const useApi = () => ({
   validateToken: async (url: string, token: string) => {
-    const response = await api.get(url, {
+    const { data } = await api.get<PrivateRoutes>(url, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
 
-    return response.data;
+    return data;
   },
   register: async (name: string, email: string, password: string) => {
     const { data } = await api.post<RegisterDataAPI>(

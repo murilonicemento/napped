@@ -44,6 +44,11 @@ export interface RegisterErrorAPI {
 
 export interface LoginErrorAPI extends RegisterErrorAPI {}
 
+export interface PrivateRoutes {
+  success: boolean;
+  statusCode: number;
+}
+
 export type AuthContextType = {
   user: User | null;
   validateToken: (url: string, token: string) => Promise<boolean>;
