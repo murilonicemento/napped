@@ -18,7 +18,7 @@ export function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route
-            path="/"
+            path="/home"
             element={
               <RequireAuth>
                 <Home />
