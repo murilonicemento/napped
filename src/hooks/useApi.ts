@@ -1,9 +1,13 @@
 import { api } from "../services/api";
-import { RegisterDataAPI } from "../utils/types";
+import { LoginDataAPI, RegisterDataAPI } from "../utils/types";
 
 export const useApi = () => ({
-  validateToken: async (token: string) => {
-    const response = await api.post("/validate", { token });
+  validateToken: async (url: string, token: string) => {
+    const response = await api.get(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     return response.data;
   },
@@ -25,7 +29,7 @@ export const useApi = () => ({
     return data;
   },
   login: async (email: string, password: string) => {
-    const response = await api.post(
+    const response = await api.post<LoginDataAPI>(
       "/login",
       { email, password },
       {
