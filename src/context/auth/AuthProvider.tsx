@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useApi } from "../../hooks/useApi.ts";
 import { User } from "../../utils/types.ts";
 import { AuthContext } from "./AuthContext.tsx";
@@ -7,18 +7,18 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<User | null>(null);
   const api = useApi();
 
-  useEffect(() => {
-    const validateToken = async () => {
-      const storageData = localStorage.getItem("authToken");
-      if (storageData) {
-        const data = await api.validateToken(storageData);
-        if (data.user) {
-          setUser(data.user);
-        }
+  const validateToken = async (url: string) => {
+    const storageData = localStorage.getItem("authToken");
+    if (storageData) {
+      const data = await api.validateToken(url, storageData);
+      if (data.user) {
+        setUser(data.user);
+        return true;
       }
-    };
-    validateToken();
-  }, [api]);
+    }
+
+    return false;
+  };
 
   const register = async (name: string, email: string, password: string) => {
     const data = await api.register(name, email, password);
@@ -30,11 +30,13 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
   const login = async (email: string, password: string) => {
     const data = await api.login(email, password);
-    if (data.user && data.token) {
+
+    if (data.user && data.user.access_token) {
       setUser(data.user);
-      setToken(data.token);
+      setToken(data.user.access_token);
       return true;
     }
+
     return false;
   };
 
@@ -50,7 +52,9 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, register, login, signOut }}>
+    <AuthContext.Provider
+      value={{ user, validateToken, register, login, signOut }}
+    >
       {children}
     </AuthContext.Provider>
   );
