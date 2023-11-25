@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { AxiosError } from "axios";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/auth/AuthContext";
+import { LoginErrorAPI } from "../utils/types";
 
 export function LoginForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const auth = useContext(AuthContext);
+  const navigate = useNavigate();
 
   function validateForm() {
     let isValid = true;
@@ -22,6 +27,17 @@ export function LoginForm() {
     event.preventDefault();
 
     if (!validateForm()) return;
+
+    try {
+      const isLoged = await auth.login(email, password);
+
+      if (isLoged) return navigate("/home");
+    } catch (error) {
+      const data = (error as AxiosError<LoginErrorAPI>).response?.data;
+      const message = data?.error.message;
+
+      return toast.error(`${message}`);
+    }
   }
 
   return (
