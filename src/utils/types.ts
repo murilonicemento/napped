@@ -44,8 +44,8 @@ export interface RegisterErrorAPI {
 
 export interface LoginErrorAPI extends RegisterErrorAPI {}
 
-export interface PrivateRoutes {
-  success: boolean;
+export interface ValidateToken {
+  validated: boolean;
   statusCode: number;
 }
 

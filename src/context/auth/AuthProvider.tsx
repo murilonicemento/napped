@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useApi } from "../../hooks/useApi.ts";
 import { User } from "../../utils/types.ts";
 import { AuthContext } from "./AuthContext.tsx";
@@ -7,15 +7,18 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<User | null>(null);
   const api = useApi();
 
-  const validateToken = async (url: string) => {
-    const storageData = localStorage.getItem("authToken");
-    if (storageData) {
-      const data = await api.validateToken(url, storageData);
-      return data.success;
-    }
-
-    return false;
-  };
+  useEffect(() => {
+    const validateToken = async () => {
+      const storageData = localStorage.getItem("authToken");
+      if (storageData) {
+        const data = await api.validateToken(storageData);
+        if (data.validated) {
+          setUser("");
+        }
+      }
+    };
+    validateToken();
+  }, [api]);
 
   const register = async (name: string, email: string, password: string) => {
     const data = await api.register(name, email, password);
