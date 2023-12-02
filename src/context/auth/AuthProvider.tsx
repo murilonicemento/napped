@@ -7,16 +7,21 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<User | null>(null);
   const api = useApi();
 
-  useEffect(() => {
-    const validateToken = async () => {
-      const storageData = localStorage.getItem("authToken");
-      if (storageData) {
-        const data = await api.validateToken(storageData);
-        if (data.validated) {
-          setUser("");
-        }
+  const validateToken = async () => {
+    const storageData = localStorage.getItem("authToken");
+    if (storageData) {
+      const data = await api.validateToken(storageData);
+      if (data.validated) {
+        setUser(data.user);
+        return true;
       }
-    };
+    }
+
+    setUser(null);
+    return false;
+  };
+
+  useEffect(() => {
     validateToken();
   }, [api]);
 
