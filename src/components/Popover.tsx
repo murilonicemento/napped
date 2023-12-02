@@ -5,9 +5,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { NavLink } from "./NavLink";
 
 export function PopAnchor() {
+  const { pathname } = useLocation();
+
   return (
     <Popover placement="left">
       <PopoverTrigger>
@@ -20,36 +23,27 @@ export function PopAnchor() {
       <PopoverContent>
         <PopoverBody className="w-80 mt-16 border border-none rounded-xl bg-dark-10 p-4">
           <nav className="flex flex-col gap-4 text-white mb-4">
-            <Link
-              to="/"
-              className="cursor-pointer hover:text-dark-blue transition-colors"
-            >
-              Início
-            </Link>
-            <Link
+            <NavLink to="/" isActive={pathname === "/"} text="Início" />
+            <NavLink
               to="/series"
-              className="cursor-pointer hover:text-dark-blue transition-colors"
-            >
-              Séries
-            </Link>
-            <Link
+              isActive={pathname === "/series"}
+              text="Séries"
+            />
+            <NavLink
               to="/movies"
-              className="cursor-pointer hover:text-dark-blue transition-colors"
-            >
-              Filmes
-            </Link>
-            <Link
+              isActive={pathname === "/movies"}
+              text="Filmes"
+            />
+            <NavLink
               to="/animes"
-              className="cursor-pointer hover:text-dark-blue transition-colors"
-            >
-              Animes
-            </Link>
-            <Link
+              isActive={pathname === "/animes"}
+              text="Animes"
+            />
+            <NavLink
               to="/games"
-              className="cursor-pointer hover:text-dark-blue transition-colors"
-            >
-              Jogos
-            </Link>
+              isActive={pathname === "/games"}
+              text="Jogos"
+            />
           </nav>
           <Link
             to="/login"
