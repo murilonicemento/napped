@@ -45,13 +45,14 @@ export interface RegisterErrorAPI {
 export interface LoginErrorAPI extends RegisterErrorAPI {}
 
 export interface ValidateToken {
+  user: User;
   validated: boolean;
   statusCode: number;
 }
 
 export type AuthContextType = {
   user: User | null;
-  validateToken: (url: string, token: string) => Promise<boolean>;
+  validateToken: () => Promise<boolean>;
   register: (name: string, email: string, password: string) => Promise<boolean>;
   login: (email: string, password: string) => Promise<boolean>;
   signOut: () => void;
