@@ -29,9 +29,9 @@ export function LoginForm() {
     if (!validateForm()) return;
 
     try {
-      const isLoged = await auth.login(email, password);
+      const isLogged = await auth.login(email, password);
 
-      if (isLoged) return navigate("/home");
+      if (isLogged) return navigate("/");
     } catch (error) {
       const data = (error as AxiosError<LoginErrorAPI>).response?.data;
       const message = data?.error.message;
