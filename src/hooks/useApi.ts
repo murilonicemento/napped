@@ -2,8 +2,18 @@ import { api } from "../services/api";
 import { LoginDataAPI, RegisterDataAPI, ValidateToken } from "../utils/types";
 
 export const useApi = () => ({
-  validateToken: async (token: string) => {
-    const { data } = await api.post<ValidateToken>("/validate", { token });
+  validateToken: async (access_token: string) => {
+    const { data } = await api.post<ValidateToken>(
+      "/validate",
+      {
+        access_token,
+      },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
 
     return data;
   },
