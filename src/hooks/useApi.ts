@@ -1,9 +1,9 @@
-import { api } from "../services/api";
+import { authAPI } from "../services/api";
 import { LoginDataAPI, RegisterDataAPI, ValidateToken } from "../utils/types";
 
 export const useApi = () => ({
   validateToken: async (access_token: string) => {
-    const { data } = await api.post<ValidateToken>(
+    const { data } = await authAPI.post<ValidateToken>(
       "/validate",
       {
         access_token,
@@ -18,7 +18,7 @@ export const useApi = () => ({
     return data;
   },
   register: async (name: string, email: string, password: string) => {
-    const { data } = await api.post<RegisterDataAPI>(
+    const { data } = await authAPI.post<RegisterDataAPI>(
       "/register",
       {
         name,
@@ -35,7 +35,7 @@ export const useApi = () => ({
     return data;
   },
   login: async (email: string, password: string) => {
-    const response = await api.post<LoginDataAPI>(
+    const response = await authAPI.post<LoginDataAPI>(
       "/login",
       { email, password },
       {
@@ -48,7 +48,7 @@ export const useApi = () => ({
     return response.data;
   },
   signOut: async () => {
-    const response = await api.post("/signOut");
+    const response = await authAPI.post("/signOut");
 
     return response.data;
   },
