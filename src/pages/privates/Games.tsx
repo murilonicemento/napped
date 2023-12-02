@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Footer } from "../../components/Footer";
+import { Header } from "../../components/Header";
 import { useApi } from "../../hooks/useApi";
 
 export function Games() {
@@ -18,8 +20,10 @@ export function Games() {
 
   return (
     <div>
+      <Header />
       <h1>Animes Page</h1>
       <p>Welcome to the Animes page!</p>
+      <Footer />
     </div>
   );
 }
