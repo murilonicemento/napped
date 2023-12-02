@@ -67,11 +67,6 @@ export function RegisterForm() {
         setTimeout(() => {
           toast.success("Usuário cadastrado com sucesso.", {
             id: toastId,
-            position: "top-center",
-            style: {
-              backgroundColor: "#151B26",
-              color: "#FEFBFB",
-            },
           });
         }, 1300);
 
