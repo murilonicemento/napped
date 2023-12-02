@@ -30,6 +30,11 @@ export function LoginForm() {
 
     try {
       const isLogged = await auth.login(email, password);
+      const toastId = toast.loading("Logando...");
+
+      toast.success("Usuário logado com sucesso.", {
+        id: toastId,
+      });
 
       if (isLogged) return navigate("/");
     } catch (error) {
