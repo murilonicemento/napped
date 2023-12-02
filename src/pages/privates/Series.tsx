@@ -1,23 +1,19 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/auth/AuthContext";
+import { useApi } from "../../hooks/useApi";
 
 export function Series() {
-  const auth = useContext(AuthContext);
+  const api = useApi();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const validateToken = async () => {
-      const id = 12;
-      const url = `private/series/${id}`;
-      const token = localStorage.getItem("authToken");
-      if (token) {
-        const isValidated = await auth.validateToken(url, token);
-        console.log(isValidated);
-        return !isValidated && navigate("/login");
-      }
-    };
-    validateToken();
+    const access_token = localStorage.getItem("authToken");
+
+    if (!access_token) return navigate("/login");
+
+    const isValidated = api.validateToken(access_token);
+
+    if (!isValidated) return navigate("/login");
   }, []);
   return (
     <div>
