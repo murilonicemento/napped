@@ -1,6 +1,6 @@
 export interface NavLinkProps {
   to: string;
-  isActive: string;
+  isActive: boolean;
   text: string;
 }
 
