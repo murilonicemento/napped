@@ -1,3 +1,9 @@
+export interface NavLinkProps {
+  to: string;
+  isActive: string;
+  text: string;
+}
+
 export interface FormProps {
   name: string;
   email: string;
