@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useApi } from "../../hooks/useApi.ts";
 import { User } from "../../utils/types.ts";
 import { AuthContext } from "./AuthContext.tsx";
@@ -20,10 +20,6 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     setUser(null);
     return false;
   };
-
-  useEffect(() => {
-    validateToken();
-  }, [api]);
 
   const register = async (name: string, email: string, password: string) => {
     const data = await api.register(name, email, password);
