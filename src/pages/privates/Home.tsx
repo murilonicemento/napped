@@ -79,11 +79,6 @@ export function Home() {
               title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare urna pharetra ut ac, pellentesque. "
             />
-            <ReleaseCard
-              type="Filmes"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare urna pharetra ut ac, pellentesque. "
-            />
           </div>
         </section>
       </main>
