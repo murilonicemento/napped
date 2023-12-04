@@ -1,36 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import anime from "../../assets/images/animeLower.svg";
+import gojo from "../../assets/images/gojo.png";
 import goku from "../../assets/images/goku.svg";
 import tanjiro from "../../assets/images/tanjiro.svg";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { LatestNewsCard } from "../../components/LatestNewsCard";
 import { useApi } from "../../hooks/useApi";
-import { newsAPI } from "../../services/api";
 
 export function Animes() {
   const authAPI = useApi();
   const navigate = useNavigate();
-  const [title, setTitle] = useState<string>("");
-  const [URLToImage, setURLToImage] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-  const [content, setContent] = useState<string>("");
-
-  async function getDataAPI() {
-    const { data } = await newsAPI.get(
-      `/everything?q=animes&sortBy=popularity&language=pt&apiKey=${
-        import.meta.env.VITE_API_NEWS_KEY
-      }`
-    );
-
-    setTitle(data.articles[0].title);
-    setURLToImage(data.articles[0].urlToImage);
-    setDescription(data.articles[0].description);
-    setContent(data.articles[0].content);
-
-    console.log(data);
-  }
 
   /**
    * TODO: Ao invés do botão minha colocar um avatar (foto de perfil do usuário) e ao clicar redirecionar para página de alteração de informações do usuário
@@ -46,39 +27,40 @@ export function Animes() {
     const isValidated = authAPI.validateToken(access_token);
 
     if (!isValidated) return navigate("/login");
-
-    getDataAPI();
   }, []);
 
   return (
     <>
       <Header />
-      <div className="w-10/12 flex flex-col m-auto mt-20 mb-4 gap-3">
-        <h1 className="text-transparent bg-clip-text bg-gradient-to-b from-brand to-dark-blue text-dark-blue text-center">
-          Animes
-        </h1>
-        <p className="text-white text-xl text-center">{title}</p>
-        <p className="text-dark-40 text-sm text-center">{description}</p>
-      </div>
-      <main className="w-10/12 m-auto">
+      <main className="w-10/12 m-auto mt-20">
         <section className="flex flex-col gap-6">
-          <img
-            src={URLToImage}
-            alt="Girl looking with her left hand holding her straw hat as the wind blows."
+          <div className="filter brightness-75">
+            <img
+              src={gojo}
+              alt="Imagem"
+              className="w-full h-fit border border-none rounded-md"
+            />
+            <div className="w-full absolute bottom-0 left-0 right-0 p-4 text-white">
+              <h2 className="uppercase text-sm">Animes</h2>
+              <p className="text-sm mt-2 text-dark-40">
+                O Naped pode ser sua fonte de informações sobre o mundo nerd e
+                outros assuntos relacionados.
+              </p>
+            </div>
+          </div>
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Quer ajuda na procura? Pesquise aqui"
+            className="w-full h-auto pt-1 pb-1 pl-2 pr-2 bg-footer bg-no-repeat border border-solid border-dark-30 rounded-sm placeholder:text-sm"
+            style={{
+              backgroundImage: "url(./src/assets/images/loupe.svg)",
+              backgroundPosition: "right center",
+            }}
           />
-          <p className="text-dark-40 text-sm text-center">{content}</p>
-          <p className="text-dark-40 text-sm text-center">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-            mauris vel dolor consectetur scelerisque quis eu eros. Morbi varius
-            eu odio nec vehicula. Maecenas blandit nunc vitae enim fermentum,
-            nec ullamcorper magna molestie. Fusce efficitur ipsum ullamcorper
-            tellus pharetra, et vehicula enim feugiat. Sed scelerisque at orci
-            rhoncus dapibus. Donec maximus porttitor mauris. Sed tempus felis
-            sit amet gravida sagittis. Ut eleifend ornare leo et auctor.
-          </p>
         </section>
         <section className="mt-12 flex flex-col gap-6">
-          <h2 className="text-white">Outras notícias parecidos</h2>
           <LatestNewsCard
             imageURL={tanjiro}
             title="Animes"
