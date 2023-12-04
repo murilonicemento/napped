@@ -7,6 +7,7 @@ import { Animes } from "./pages/privates/Animes.tsx";
 import { Games } from "./pages/privates/Games.tsx";
 import { Home } from "./pages/privates/Home.tsx";
 import { Movies } from "./pages/privates/Movies.tsx";
+import { MyAccount } from "./pages/privates/MyAccount.jsx";
 import { Series } from "./pages/privates/Series.tsx";
 
 export function App() {
@@ -21,6 +22,7 @@ export function App() {
           <Route path="/series" element={<Series />} />
           <Route path="/animes" element={<Animes />} />
           <Route path="/games" element={<Games />} />
+          <Route path="/myaccount" element={<MyAccount />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
