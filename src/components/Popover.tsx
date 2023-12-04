@@ -46,7 +46,7 @@ export function PopAnchor() {
             />
           </nav>
           <Link
-            to="/login"
+            to="/myaccount"
             className="text-white bg-gradient-to-b from-brand to-dark-blue w-36 flex justify-center border rounded border-none p-2 hover:text-dark-blue transition-colors"
           >
             Minha Conta
