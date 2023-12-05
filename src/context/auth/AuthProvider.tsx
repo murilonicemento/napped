@@ -7,14 +7,12 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<User | null>(null);
   const api = useApi();
 
-  const validateToken = async () => {
-    const storageData = localStorage.getItem("authToken");
-    if (storageData) {
-      const data = await api.validateToken(storageData);
-      if (data.validated) {
-        setUser(data.user);
-        return true;
-      }
+  const validateToken = async (access_token: string) => {
+    const data = await api.validateToken(access_token);
+
+    if (data.validated && data.user) {
+      setUser(data.user);
+      return true;
     }
 
     setUser(null);
@@ -48,9 +46,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     await api.signOut();
   };
 
-  const setToken = (token: string) => {
-    localStorage.setItem("authToken", token);
-  };
+  const setToken = (token: string) => localStorage.setItem("authToken", token);
 
   return (
     <AuthContext.Provider
