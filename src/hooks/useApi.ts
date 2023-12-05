@@ -35,7 +35,7 @@ export const useApi = () => ({
     return data;
   },
   login: async (email: string, password: string) => {
-    const response = await authAPI.post<LoginDataAPI>(
+    const { data } = await authAPI.post<LoginDataAPI>(
       "/login",
       { email, password },
       {
@@ -45,11 +45,11 @@ export const useApi = () => ({
       }
     );
 
-    return response.data;
+    return data;
   },
   signOut: async () => {
-    const response = await authAPI.post("/signOut");
+    const { data } = await authAPI.post("/signOut");
 
-    return response.data;
+    return data;
   },
 });
