@@ -58,7 +58,7 @@ export interface ValidateToken {
 
 export type AuthContextType = {
   user: User | null;
-  validateToken: () => Promise<boolean>;
+  validateToken: (access_token: string) => Promise<boolean>;
   register: (name: string, email: string, password: string) => Promise<boolean>;
   login: (email: string, password: string) => Promise<boolean>;
   signOut: () => void;
