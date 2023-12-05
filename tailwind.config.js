@@ -21,6 +21,7 @@ export default {
       "green": "#0BB07B",
       "warning": "#FFCE52",
       "error": "#F03D3D",
+      "dark-red": "#800000",
       "information": "#E0E0E0",
       "white": "#FEFBFB"
     },
