@@ -18,6 +18,7 @@ export function Animes() {
    * TODO: Cria uma página para minha conta onde será possível alterar informações do usuário e deletar a conta. Também adicionar a funcionalidade de inclusão foto de perfil (Colocar como foto padrão Toji Fushiguro)
    * TODO: Adicionar animações
    * TODO: Consumir API da NEWSDATA.IO
+   * TODO: Criar botão para sair da conta
    */
 
   useEffect(() => {
