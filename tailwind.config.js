@@ -20,6 +20,7 @@ export default {
       "blue": "#2962FF",
       "green": "#0BB07B",
       "warning": "#FFCE52",
+      "dark-warning": "#FFB300",
       "error": "#F03D3D",
       "dark-red": "#800000",
       "information": "#E0E0E0",
