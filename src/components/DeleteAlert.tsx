@@ -23,12 +23,12 @@ export function DeleteAlert() {
   const navigate = useNavigate();
   const userId = auth.user?.id;
 
-  async function handleDeleteAccount() {
+  const handleDeleteAccount = async () => {
     try {
       if (userId) {
         const isDeleted = await auth.deleteAccount(userId);
 
-        if (isDeleted) toast.success("Usuário deletado com sucesso");
+        if (isDeleted) toast.success("Usuário deletado com sucesso.");
 
         return navigate("/login");
       }
@@ -40,7 +40,7 @@ export function DeleteAlert() {
 
       return toast.error(`${message}`);
     }
-  }
+  };
 
   return (
     <>
