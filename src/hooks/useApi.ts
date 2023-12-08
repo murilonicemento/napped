@@ -1,5 +1,10 @@
 import { authAPI } from "../services/api";
-import { LoginDataAPI, RegisterDataAPI, ValidateToken } from "../utils/types";
+import {
+  DeleteDataAPI,
+  LoginDataAPI,
+  RegisterDataAPI,
+  ValidateToken,
+} from "../utils/types";
 
 export const useApi = () => ({
   validateToken: async (access_token: string) => {
@@ -44,6 +49,11 @@ export const useApi = () => ({
         },
       }
     );
+
+    return data;
+  },
+  deleteAccount: async (id: number) => {
+    const { data } = await authAPI.delete<DeleteDataAPI>(`/delete/${id}`);
 
     return data;
   },

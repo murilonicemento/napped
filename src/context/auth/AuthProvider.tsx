@@ -39,6 +39,12 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     return false;
   };
 
+  const deleteAccount = async (id: number) => {
+    const data = await api.deleteAccount(id);
+
+    return data.statusCode === 200;
+  };
+
   const signOut = async () => {
     console.log("SignOut está sendo executada.");
     setUser(null);
@@ -50,7 +56,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, validateToken, register, login, signOut }}
+      value={{ user, validateToken, register, login, deleteAccount, signOut }}
     >
       {children}
     </AuthContext.Provider>

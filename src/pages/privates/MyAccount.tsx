@@ -1,26 +1,37 @@
+import { AxiosError } from "axios";
 import { useContext, useEffect } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import toji from "../../assets/images/toji-fushiguro.jpg";
+import { DeleteAlert } from "../../components/AlertDialog";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { AuthContext } from "../../context/auth/AuthContext";
+import { ValidateTokenErrorAPI } from "../../utils/types";
 
 export function MyAccount() {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleDelete = async () => {
-    console.log("NUH deletei, sem querer!");
+  const validate = async () => {
+    try {
+      const access_token = localStorage.getItem("authToken");
+
+      if (!access_token) return navigate("/login");
+
+      await auth.validateToken(access_token);
+    } catch (error) {
+      const data = (error as AxiosError<ValidateTokenErrorAPI>).response?.data;
+      const message = data?.error.message;
+
+      toast.error(`${message} Realize o login para ter acesso ao Napped.`);
+
+      return setTimeout(() => navigate("/login"), 1200);
+    }
   };
 
   useEffect(() => {
-    const access_token = localStorage.getItem("authToken");
-
-    if (!access_token) return navigate("/login");
-
-    const isValidated = auth.validateToken(access_token);
-
-    if (!isValidated) return navigate("/login");
+    validate();
   }, []);
 
   return (
@@ -72,13 +83,7 @@ export function MyAccount() {
           >
             Salvar
           </button>
-          <button
-            type="button"
-            onClick={handleDelete}
-            className="w-full text-white bg-gradient-to-b from-error to-dark-red flex justify-center border rounded border-none p-2"
-          >
-            Deletar Conta
-          </button>
+          <DeleteAlert />
         </form>
       </main>
       <Footer />
