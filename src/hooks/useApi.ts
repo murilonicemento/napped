@@ -8,17 +8,9 @@ import {
 
 export const useApi = () => ({
   validateToken: async (access_token: string) => {
-    const { data } = await authAPI.post<ValidateToken>(
-      "/validate",
-      {
-        access_token,
-      },
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+    const { data } = await authAPI.get<ValidateToken>("/validate", {
+      headers: { Authorization: `Bearer ${access_token}` },
+    });
 
     return data;
   },
