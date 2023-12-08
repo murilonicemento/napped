@@ -1,4 +1,6 @@
-import { useEffect } from "react";
+import { AxiosError } from "axios";
+import { useContext, useEffect } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import anime from "../../assets/images/animeLower.svg";
 import goku from "../../assets/images/goku.svg";
@@ -6,20 +8,32 @@ import tanjiro from "../../assets/images/tanjiro.svg";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { LatestNewsCard } from "../../components/LatestNewsCard";
-import { useApi } from "../../hooks/useApi";
+import { AuthContext } from "../../context/auth/AuthContext";
+import { ValidateTokenErrorAPI } from "../../utils/types";
 
 export function Series() {
-  const api = useApi();
+  const auth = useContext(AuthContext);
   const navigate = useNavigate();
 
+  const validate = async () => {
+    try {
+      const access_token = localStorage.getItem("authToken");
+
+      if (!access_token) return navigate("/login");
+
+      await auth.validateToken(access_token);
+    } catch (error) {
+      const data = (error as AxiosError<ValidateTokenErrorAPI>).response?.data;
+      const message = data?.error.message;
+
+      toast.error(`${message} Realize o login para ter acesso ao Napped.`);
+
+      return setTimeout(() => navigate("/login"), 1200);
+    }
+  };
+
   useEffect(() => {
-    const access_token = localStorage.getItem("authToken");
-
-    if (!access_token) return navigate("/login");
-
-    const isValidated = api.validateToken(access_token);
-
-    if (!isValidated) return navigate("/login");
+    validate();
   }, []);
 
   return (
