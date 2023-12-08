@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import toji from "../../assets/images/toji-fushiguro.jpg";
-import { DeleteAlert } from "../../components/AlertDialog";
+import { DeleteAlert } from "../../components/DeleteAlert";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { AuthContext } from "../../context/auth/AuthContext";
