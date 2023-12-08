@@ -49,9 +49,4 @@ export const useApi = () => ({
 
     return data;
   },
-  signOut: async () => {
-    const { data } = await authAPI.post("/signOut");
-
-    return data;
-  },
 });
