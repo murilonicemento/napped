@@ -41,6 +41,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
   const deleteAccount = async (id: number) => {
     const data = await api.deleteAccount(id);
+    removeToken();
 
     return data.statusCode === 200;
   };
@@ -48,11 +49,13 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const signOut = async () => {
     console.log("SignOut está sendo executada.");
     setUser(null);
-    setToken("");
+    removeToken();
     await api.signOut();
   };
 
   const setToken = (token: string) => localStorage.setItem("authToken", token);
+
+  const removeToken = () => localStorage.removeItem("authToken");
 
   return (
     <AuthContext.Provider
