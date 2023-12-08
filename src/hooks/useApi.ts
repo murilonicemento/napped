@@ -49,4 +49,26 @@ export const useApi = () => ({
 
     return data;
   },
+  updateAccount: async (
+    id: number,
+    name?: string,
+    email?: string,
+    password?: string
+  ) => {
+    const { data } = await authAPI.put(
+      `/update/${id}`,
+      {
+        name,
+        email,
+        password,
+      },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    return data;
+  },
 });

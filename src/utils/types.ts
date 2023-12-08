@@ -71,6 +71,12 @@ export type AuthContextType = {
   register: (name: string, email: string, password: string) => Promise<boolean>;
   login: (email: string, password: string) => Promise<boolean>;
   deleteAccount: (id: number) => Promise<boolean>;
+  updateAccount: (
+    id: number,
+    name?: string,
+    email?: string,
+    password?: string
+  ) => Promise<boolean>;
   signOut: () => void;
 };
 

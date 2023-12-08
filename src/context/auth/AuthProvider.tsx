@@ -46,6 +46,17 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     return data.statusCode === 200;
   };
 
+  const updateAccount = async (
+    id: number,
+    name?: string,
+    email?: string,
+    password?: string
+  ) => {
+    const data = await api.updateAccount(id, name);
+
+    return data.statusCode === 200;
+  };
+
   const signOut = () => {
     setUser(null);
     removeToken();
@@ -57,7 +68,15 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, validateToken, register, login, deleteAccount, signOut }}
+      value={{
+        user,
+        validateToken,
+        register,
+        login,
+        deleteAccount,
+        updateAccount,
+        signOut,
+      }}
     >
       {children}
     </AuthContext.Provider>

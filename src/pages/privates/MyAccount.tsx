@@ -1,5 +1,5 @@
 import { AxiosError } from "axios";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import toji from "../../assets/images/toji-fushiguro.jpg";
@@ -10,8 +10,34 @@ import { AuthContext } from "../../context/auth/AuthContext";
 import { ValidateTokenErrorAPI } from "../../utils/types";
 
 export function MyAccount() {
+  const [name, setName] = useState<string | null>(null);
+  const [email, setEmail] = useState<string | null>(null);
+  const [password, setPassword] = useState<string | null>(null);
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
+  const passwordRegex =
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/;
+
+  const handleUpdateAccount = async () => {
+    try {
+      if (
+        !password?.trim().length &&
+        password !== null &&
+        !passwordRegex.test(password)
+      ) {
+        return toast.error(
+          "Senha deve conter 8 caracteres, letras maiúsculas e minúsculas e um carácter especial.",
+          { duration: 5000 }
+        );
+      }
+
+      if (auth.user) {
+        await auth.updateAccount(auth.user?.id, "cleitin");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const validate = async () => {
     try {
@@ -55,6 +81,7 @@ export function MyAccount() {
               type="text"
               name="name"
               id="name"
+              onChange={(event) => setName(event.target.value)}
               placeholder={auth.user?.name}
               className="w-full bg-[url('./src/assets/images/user.svg')] bg-left bg-no-repeat bg-dark-30 pl-10 pt-2 pb-2 border border-solid rounded-md border-dark-30 text-white placeholder:text-white"
             />
@@ -64,6 +91,7 @@ export function MyAccount() {
               type="email"
               name="email"
               id="email"
+              onChange={(event) => setEmail(event.target.value)}
               placeholder={auth.user?.email}
               className="w-full bg-[url('./src/assets/images/at-sign.svg')] bg-left bg-no-repeat bg-dark-30 pl-10 pt-2 pb-2 border rounded-md border-dark-30 text-white placeholder:text-white"
             />
@@ -73,12 +101,14 @@ export function MyAccount() {
               type="password"
               name="password"
               id="password"
+              onChange={(event) => setPassword(event.target.value)}
               placeholder="********"
               className="w-full bg-[url('./src/assets/images/lock.svg')] bg-left bg-no-repeat bg-dark-30 pl-10 pt-2 pb-2 border rounded-md border-dark-30 text-white placeholder:text-white"
             />
           </label>
           <button
-            type="submit"
+            type="button"
+            onClick={handleUpdateAccount}
             className="w-full text-white bg-gradient-to-b from-brand to-dark-blue flex justify-center border rounded border-none p-2"
           >
             Salvar
