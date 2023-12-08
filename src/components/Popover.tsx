@@ -5,11 +5,21 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@chakra-ui/react";
-import { Link, useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/auth/AuthContext";
 import { NavLink } from "./NavLink";
 
 export function PopAnchor() {
   const { pathname } = useLocation();
+  const auth = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    auth.signOut();
+
+    return navigate("/login");
+  };
 
   return (
     <Popover placement="left">
@@ -45,12 +55,21 @@ export function PopAnchor() {
               text="Jogos"
             />
           </nav>
-          <Link
-            to="/myaccount"
-            className="text-white bg-gradient-to-b from-brand to-dark-blue w-36 flex justify-center border rounded border-none p-2"
-          >
-            Minha Conta
-          </Link>
+          <span className="flex flex-col gap-4">
+            <Link
+              to="/myaccount"
+              className="w-36 text-white bg-gradient-to-b from-brand to-dark-blue flex justify-center border rounded border-none p-2"
+            >
+              Minha Conta
+            </Link>
+            <button
+              type="submit"
+              onClick={handleSignOut}
+              className="w-36 text-white bg-gradient-to-b from-warning to-dark-warning flex justify-center border rounded border-none p-2"
+            >
+              Sair
+            </button>
+          </span>
         </PopoverBody>
       </PopoverContent>
     </Popover>
