@@ -46,11 +46,9 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     return data.statusCode === 200;
   };
 
-  const signOut = async () => {
-    console.log("SignOut está sendo executada.");
+  const signOut = () => {
     setUser(null);
     removeToken();
-    await api.signOut();
   };
 
   const setToken = (token: string) => localStorage.setItem("authToken", token);
