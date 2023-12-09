@@ -9,7 +9,6 @@ import tanjiro from "../../assets/images/tanjiro.svg";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { LatestNewsCard } from "../../components/LatestNewsCard";
-import { Example } from "../../components/SideBar/Example";
 import { AuthContext } from "../../context/auth/AuthContext";
 import { ValidateTokenErrorAPI } from "../../utils/types";
 
