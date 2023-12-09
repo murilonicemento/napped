@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.svg";
 import { PopAnchor } from "./Popover.tsx";
+import { Example } from "./SideBar/Example.tsx";
 
 export function Header() {
   return (
@@ -11,7 +12,8 @@ export function Header() {
           Napped
         </span>
       </Link>
-      <PopAnchor />
+      {/* <PopAnchor /> */}
+      <Example />
     </header>
   );
 }
