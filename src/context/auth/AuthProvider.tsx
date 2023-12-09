@@ -48,11 +48,11 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
   const updateAccount = async (
     id: number,
-    name?: string,
-    email?: string,
-    password?: string
+    name: string | null = null,
+    email: string | null = null,
+    password: string | null = null
   ) => {
-    const data = await api.updateAccount(id, name);
+    const data = await api.updateAccount(id, name, email, password);
 
     return data.statusCode === 200;
   };
