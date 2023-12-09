@@ -14,7 +14,7 @@ import { useContext, useRef } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth/AuthContext";
-import { DeleteErrorAPI } from "../utils/types";
+import { DeleteAccountErrorAPI } from "../utils/types";
 
 export function DeleteAlert() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -35,7 +35,7 @@ export function DeleteAlert() {
 
       return toast.error("Id do usuário não fornecido.");
     } catch (error) {
-      const data = (error as AxiosError<DeleteErrorAPI>).response?.data;
+      const data = (error as AxiosError<DeleteAccountErrorAPI>).response?.data;
       const message = data?.error.message;
 
       return toast.error(`${message}`);
@@ -48,7 +48,7 @@ export function DeleteAlert() {
         onClick={onOpen}
         className="w-full text-white bg-gradient-to-b from-error to-dark-red flex justify-center border rounded border-none p-2"
       >
-        Discard
+        Deletar conta
       </Button>
       <AlertDialog
         motionPreset="slideInBottom"
@@ -61,7 +61,7 @@ export function DeleteAlert() {
 
         <AlertDialogContent className="bg-dark-10 text-white p-4 mt-40 rounded-md">
           <AlertDialogHeader className="flex items-center justify-between pt-3 pb-3 text-xl">
-            Deletar Conta?
+            Deletar conta?
             <AlertDialogCloseButton className="text-base" />
           </AlertDialogHeader>
           <AlertDialogBody>
