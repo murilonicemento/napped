@@ -1,5 +1,5 @@
 import { AxiosError } from "axios";
-import { useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import anime from "../../assets/images/animeLower.svg";
@@ -24,7 +24,7 @@ export function Animes() {
    * TODO: Criar botão para sair da conta
    */
 
-  const validate = async () => {
+  const validate = useCallback(async () => {
     try {
       const access_token = localStorage.getItem("authToken");
 
@@ -39,11 +39,11 @@ export function Animes() {
 
       return setTimeout(() => navigate("/login"), 1200);
     }
-  };
+  }, [auth, navigate]);
 
   useEffect(() => {
     validate();
-  }, []);
+  }, [validate]);
 
   return (
     <>
