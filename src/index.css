@@ -13,6 +13,9 @@
 body {
   height: 100vh;
   background-color: #09090b;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
 }
 
 nav {
@@ -32,7 +35,7 @@ nav {
   background: #1a191e;
 }
 
-button {
+#toggleButton {
   outline: none;
   border: none;
   -webkit-user-select: none;
