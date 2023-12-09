@@ -1,13 +1,17 @@
 import { AxiosError } from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import toji from "../../assets/images/toji-fushiguro.jpg";
+import gojo from "../../assets/images/gojo-pfp.png";
 import { DeleteAlert } from "../../components/DeleteAlert";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { AuthContext } from "../../context/auth/AuthContext";
-import { ValidateTokenErrorAPI } from "../../utils/types";
+
+import {
+  UpdateAccountErrorAPI,
+  ValidateTokenErrorAPI,
+} from "../../utils/types";
 
 export function MyAccount() {
   const [name, setName] = useState<string | null>(null);
@@ -15,31 +19,8 @@ export function MyAccount() {
   const [password, setPassword] = useState<string | null>(null);
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
-  const passwordRegex =
-    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/;
 
-  const handleUpdateAccount = async () => {
-    try {
-      if (
-        !password?.trim().length &&
-        password !== null &&
-        !passwordRegex.test(password)
-      ) {
-        return toast.error(
-          "Senha deve conter 8 caracteres, letras maiúsculas e minúsculas e um carácter especial.",
-          { duration: 5000 }
-        );
-      }
-
-      if (auth.user) {
-        await auth.updateAccount(auth.user?.id, "cleitin");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const validate = async () => {
+  const validate = useCallback(async () => {
     try {
       const access_token = localStorage.getItem("authToken");
 
@@ -54,11 +35,42 @@ export function MyAccount() {
 
       return setTimeout(() => navigate("/login"), 1200);
     }
+  }, [auth, navigate]);
+
+  const handleUpdateAccount = async () => {
+    const passwordRegex =
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/;
+
+    try {
+      if (password !== null && !passwordRegex.test(password)) {
+        return toast.error(
+          "Senha deve conter 8 caracteres, letras maiúsculas e minúsculas e um carácter especial.",
+          { duration: 5000 }
+        );
+      }
+
+      if (auth.user) {
+        const isUpdated = await auth.updateAccount(
+          auth.user?.id,
+          name,
+          email,
+          password
+        );
+
+        if (isUpdated)
+          return toast.success("Dado(s) do usuário atualizado com sucesso.");
+      }
+    } catch (error) {
+      const data = (error as AxiosError<UpdateAccountErrorAPI>).response?.data;
+      const message = data?.error.message;
+
+      toast.error(`${message}`);
+    }
   };
 
   useEffect(() => {
     validate();
-  }, []);
+  }, [validate]);
 
   return (
     <>
@@ -66,7 +78,7 @@ export function MyAccount() {
       <main>
         <section className="w-10/12 flex flex-col justify-center items-center m-auto mt-10">
           <img
-            src={toji}
+            src={gojo}
             alt="Toji Fushiguro Face"
             className=" w-10/12 rounded-full border-4 border-dark-blue border-solid"
           />
@@ -108,6 +120,11 @@ export function MyAccount() {
           </label>
           <button
             type="button"
+            disabled={
+              name === null && email === null && password === null
+                ? true
+                : false
+            }
             onClick={handleUpdateAccount}
             className="w-full text-white bg-gradient-to-b from-brand to-dark-blue flex justify-center border rounded border-none p-2"
           >
