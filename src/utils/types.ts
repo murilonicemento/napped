@@ -55,10 +55,11 @@ export interface RegisterErrorAPI {
 
 export interface LoginErrorAPI extends RegisterErrorAPI {}
 
-export interface DeleteErrorAPI extends RegisterErrorAPI {}
+export interface DeleteAccountErrorAPI extends RegisterErrorAPI {}
 
 export interface ValidateTokenErrorAPI extends RegisterErrorAPI {}
 
+export interface UpdateAccountErrorAPI extends RegisterErrorAPI {}
 export interface ValidateToken {
   user: User;
   validated: boolean;
@@ -73,9 +74,9 @@ export type AuthContextType = {
   deleteAccount: (id: number) => Promise<boolean>;
   updateAccount: (
     id: number,
-    name?: string,
-    email?: string,
-    password?: string
+    name: string | null,
+    email: string | null,
+    password: string | null
   ) => Promise<boolean>;
   signOut: () => void;
 };
