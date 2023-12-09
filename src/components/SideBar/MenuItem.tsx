@@ -1,4 +1,7 @@
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
+import { MenuItemProps } from "../../utils/types";
+import { NavLink } from "../NavLink";
 
 const variants = {
   open: {
@@ -17,18 +20,23 @@ const variants = {
   },
 };
 
-const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
+export const MenuItem = ({ i }: { i: MenuItemProps }) => {
+  const { pathname } = useLocation();
 
-export const MenuItem = ({ i }) => {
-  const style = { border: `2px solid ${colors[i]}` };
   return (
     <motion.li
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
+      className="flex flex-col items-start gap-4 text-white mb-4"
     >
-      <div className="icon-placeholder" style={style} />
-      <div className="text-placeholder" style={style} />
+      <NavLink
+        to={i.pathname}
+        isActive={pathname === i.pathname}
+        text={i.name}
+        isButton={i.isButton}
+        buttonColor={i.buttonColor}
+      />
     </motion.li>
   );
 };

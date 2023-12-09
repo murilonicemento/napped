@@ -6,7 +6,7 @@ import { Navigation } from "./Navigation";
 
 const sidebar = {
   open: (height = 1000) => ({
-    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+    clipPath: `circle(${height * 2 + 200}px at 246px 43px)`,
     transition: {
       type: "spring",
       stiffness: 20,
@@ -24,7 +24,7 @@ const sidebar = {
   },
 };
 
-export const Example = () => {
+export const SideBar = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);

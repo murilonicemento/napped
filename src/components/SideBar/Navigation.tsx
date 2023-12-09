@@ -10,12 +10,58 @@ const variants = {
   },
 };
 
-export const Navigation = () => (
-  <motion.ul variants={variants}>
-    {itemIds.map((i) => (
-      <MenuItem i={i} key={i} />
-    ))}
-  </motion.ul>
-);
+export const Navigation = () => {
+  return (
+    <motion.ul variants={variants}>
+      {itemIds.map((i) => (
+        <MenuItem i={i} key={i.id} />
+      ))}
+    </motion.ul>
+  );
+};
 
-const itemIds = [0, 1, 2, 3, 4];
+const itemIds = [
+  { id: 0, name: "Início", pathname: "/", isButton: false, buttonColor: null },
+  {
+    id: 1,
+    name: "Séries",
+    pathname: "/series",
+    isButton: false,
+    buttonColor: null,
+  },
+  {
+    id: 2,
+    name: "Filmes",
+    pathname: "/movies",
+    isButton: false,
+    buttonColor: null,
+  },
+  {
+    id: 3,
+    name: "Animes",
+    pathname: "/animes",
+    isButton: false,
+    buttonColor: null,
+  },
+  {
+    id: 4,
+    name: "Games",
+    pathname: "/games",
+    isButton: false,
+    buttonColor: null,
+  },
+  {
+    id: 5,
+    name: "Minha conta",
+    pathname: "/myaccount",
+    isButton: true,
+    buttonColor: "from-brand to-dark-blue",
+  },
+  {
+    id: 6,
+    name: "Sair",
+    pathname: "",
+    isButton: true,
+    buttonColor: "from-warning to-dark-warning",
+  },
+];
