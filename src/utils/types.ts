@@ -2,6 +2,8 @@ export interface NavLinkProps {
   to: string;
   isActive: boolean;
   text: string;
+  isButton?: boolean;
+  buttonColor?: string | null;
 }
 
 export interface FormProps {
@@ -94,4 +96,12 @@ export interface ReleaseCardProps {
   type: string;
   title: string;
   description: string;
+}
+
+export interface MenuItemProps {
+  id: number;
+  name: string;
+  pathname: string;
+  isButton: boolean;
+  buttonColor: string | null;
 }
