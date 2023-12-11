@@ -62,6 +62,7 @@ export interface DeleteAccountErrorAPI extends RegisterErrorAPI {}
 export interface ValidateTokenErrorAPI extends RegisterErrorAPI {}
 
 export interface UpdateAccountErrorAPI extends RegisterErrorAPI {}
+
 export interface ValidateToken {
   user: User;
   validated: boolean;
