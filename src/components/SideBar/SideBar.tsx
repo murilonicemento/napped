@@ -35,6 +35,7 @@ export const SideBar = () => {
       animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
+      className="z-10"
     >
       <motion.div className="background" variants={sidebar} />
       <Navigation />
