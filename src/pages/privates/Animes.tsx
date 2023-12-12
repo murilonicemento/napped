@@ -6,6 +6,8 @@ import AnimatedPage from "../../animatedPage";
 import anime from "../../assets/images/animeLower.svg";
 import gojo from "../../assets/images/gojo.png";
 import goku from "../../assets/images/goku.svg";
+import left from "../../assets/images/left-arrow.svg";
+import right from "../../assets/images/right-arrow.svg";
 import tanjiro from "../../assets/images/tanjiro.svg";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
@@ -91,6 +93,26 @@ export function Animes() {
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           />
         </section>
+        <div className="flex items-center justify-center gap-3 mt-4 text-white">
+          <div className="bg-footer pt-3 pb-3 pr-4 pl-3 rounded-md">
+            <img src={left} alt="" className="" />
+          </div>
+          <div className="bg-footer text-center text-dark-blue pt-2 pb-2 pr-4 pl-3 border border-dark-blue rounded-md">
+            1
+          </div>
+          <div className="bg-footer text-center pt-2 pb-2 pr-4 pl-3 rounded-md">
+            2
+          </div>
+          <div className="bg-footer text-center pt-2 pb-2 pr-4 pl-3 rounded-md">
+            3
+          </div>
+          <div className="bg-footer text-center pt-2 pb-2 pr-4 pl-3 rounded-md">
+            4
+          </div>
+          <div className="bg-footer pt-3 pb-3 pr-4 pl-3 rounded-md">
+            <img src={right} alt="" />
+          </div>
+        </div>
       </main>
       <Footer />
     </AnimatedPage>
