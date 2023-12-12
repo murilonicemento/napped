@@ -10,7 +10,8 @@ export function NavLink({
   isButton,
   buttonColor,
 }: NavLinkProps) {
-  const defaultClass = "cursor-pointer hover:text-dark-blue transition-colors";
+  const defaultClass =
+    "text-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text cursor-pointer hover:text-dark-blue transition-colors";
   const activeClass = "text-dark-blue";
   const buttonClass = `w-36 text-white bg-gradient-to-b ${buttonColor} flex justify-center border rounded border-none p-2`;
   const auth = useContext(AuthContext);
