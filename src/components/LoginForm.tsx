@@ -30,13 +30,10 @@ export function LoginForm() {
 
     try {
       const isLogged = await auth.login(email, password);
-      const toastId = toast.loading("Logando...");
-
-      toast.success("Usuário logado com sucesso.", {
-        id: toastId,
-      });
 
       if (isLogged) return navigate("/");
+
+      return toast.error("Erro ao tentar realizar login.");
     } catch (error) {
       const data = (error as AxiosError<LoginErrorAPI>).response?.data;
       const message = data?.error.message;
