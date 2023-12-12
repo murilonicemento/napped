@@ -8,6 +8,7 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { AuthContext } from "../../context/auth/AuthContext";
 
+import AnimatedPage from "../../animatedPage";
 import {
   UpdateAccountErrorAPI,
   ValidateTokenErrorAPI,
@@ -73,7 +74,7 @@ export function MyAccount() {
   }, [validate]);
 
   return (
-    <>
+    <AnimatedPage>
       <Header />
       <main>
         <section className="w-10/12 flex flex-col justify-center items-center m-auto mt-10">
@@ -134,6 +135,6 @@ export function MyAccount() {
         </form>
       </main>
       <Footer />
-    </>
+    </AnimatedPage>
   );
 }

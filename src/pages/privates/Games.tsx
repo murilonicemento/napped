@@ -2,6 +2,7 @@ import { AxiosError } from "axios";
 import { useCallback, useContext, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import AnimatedPage from "../../animatedPage";
 import anime from "../../assets/images/animeLower.svg";
 import goku from "../../assets/images/goku.svg";
 import tanjiro from "../../assets/images/tanjiro.svg";
@@ -37,7 +38,7 @@ export function Games() {
   }, [validate]);
 
   return (
-    <>
+    <AnimatedPage>
       <Header />
       <div className="w-10/12 flex flex-col m-auto mt-20 mb-4 gap-3">
         <h1 className="text-transparent bg-clip-text bg-gradient-to-b from-brand to-dark-blue text-dark-blue text-center">
@@ -97,6 +98,6 @@ export function Games() {
         </section>
       </main>
       <Footer />
-    </>
+    </AnimatedPage>
   );
 }

@@ -1,6 +1,7 @@
 import { useCallback, useContext, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import AnimatedPage from "../animatedPage.tsx";
 import { Header } from "../components/Header.tsx";
 import { LoginForm } from "../components/LoginForm.tsx";
 import { AuthContext } from "../context/auth/AuthContext.tsx";
@@ -28,9 +29,9 @@ export function Login() {
   }, [validate]);
 
   return (
-    <>
+    <AnimatedPage>
       <Header />
       <LoginForm />
-    </>
+    </AnimatedPage>
   );
 }

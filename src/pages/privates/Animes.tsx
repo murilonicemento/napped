@@ -2,6 +2,7 @@ import { AxiosError } from "axios";
 import { useCallback, useContext, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import AnimatedPage from "../../animatedPage";
 import anime from "../../assets/images/animeLower.svg";
 import gojo from "../../assets/images/gojo.png";
 import goku from "../../assets/images/goku.svg";
@@ -43,7 +44,7 @@ export function Animes() {
   }, [validate]);
 
   return (
-    <>
+    <AnimatedPage>
       <Header />
       <main className="w-10/12 m-auto mt-20">
         <section className="flex flex-col gap-6">
@@ -92,6 +93,6 @@ export function Animes() {
         </section>
       </main>
       <Footer />
-    </>
+    </AnimatedPage>
   );
 }

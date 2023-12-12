@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import AnimatedPage from "../animatedPage";
 import notFound from "../assets/images/forward.svg";
 import { Header } from "../components/Header";
 
 export function NotFound() {
   return (
-    <>
+    <AnimatedPage>
       <Header />
       <main className="w-10/12 m-auto mt-16 text-white">
         <section className="grid place-items-center mb-8">
@@ -29,6 +30,6 @@ export function NotFound() {
           </Link>
         </section>
       </main>
-    </>
+    </AnimatedPage>
   );
 }
