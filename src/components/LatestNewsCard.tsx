@@ -8,7 +8,7 @@ export function LatestNewsCard({
   description,
 }: LatestNewsCardProps) {
   return (
-    <div className="w-full border border-solid rounded border-dark-30 pb-8">
+    <div className="w-full border border-solid rounded border-dark-30 pb-8 mb-10">
       <img src={imageURL} alt="Image" className="" />
       <div className="w-10/12 m-auto mt-6">
         <h2 className="text-dark-blue uppercase">{title}</h2>
