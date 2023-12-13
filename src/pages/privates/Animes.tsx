@@ -2,27 +2,36 @@ import { AxiosError } from "axios";
 import { useCallback, useContext, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import AnimatedPage from "../../animatedPage";
 import anime from "../../assets/images/animeLower.svg";
-import gojo from "../../assets/images/gojo.png";
 import goku from "../../assets/images/goku.svg";
-import left from "../../assets/images/left-arrow.svg";
-import right from "../../assets/images/right-arrow.svg";
 import tanjiro from "../../assets/images/tanjiro.svg";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { LatestNewsCard } from "../../components/LatestNewsCard";
+import { SearchImage } from "../../components/SearchImage";
+import { Searcher } from "../../components/Searcher";
 import { AuthContext } from "../../context/auth/AuthContext";
 import { ValidateTokenErrorAPI } from "../../utils/types";
 
 export function Animes() {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
-
-  /**
-   * TODO: Adicionar animações
-   * TODO: Consumir API da NEWSDATA.IO
-   */
+  const settings = {
+    className: "center",
+    infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 1,
+    swipeToSlide: true,
+    afterChange: function (index: number) {
+      console.log(
+        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+      );
+    },
+  };
 
   const validate = useCallback(async () => {
     try {
@@ -50,33 +59,10 @@ export function Animes() {
       <Header />
       <main className="w-10/12 m-auto mt-20">
         <section className="flex flex-col gap-6">
-          <div className="filter brightness-75">
-            <img
-              src={gojo}
-              alt="Imagem"
-              className="w-full h-fit border border-none rounded-md"
-            />
-            <div className="w-full absolute bottom-0 left-0 right-0 p-4 text-white">
-              <h2 className="uppercase text-sm">Animes</h2>
-              <p className="text-sm mt-2 text-dark-40">
-                O Naped pode ser sua fonte de informações sobre o mundo nerd e
-                outros assuntos relacionados.
-              </p>
-            </div>
-          </div>
-          <input
-            type="text"
-            name="search"
-            id="search"
-            placeholder="Quer ajuda na procura? Pesquise aqui"
-            className="w-full h-auto pt-1 pb-1 pl-2 pr-2 bg-footer bg-no-repeat border border-solid border-dark-30 rounded-sm placeholder:text-sm"
-            style={{
-              backgroundImage: "url(./src/assets/images/loupe.svg)",
-              backgroundPosition: "right center",
-            }}
-          />
+          <SearchImage />
+          <Searcher />
         </section>
-        <section className="mt-12 flex flex-col gap-6">
+        <Slider className="mt-12" {...settings}>
           <LatestNewsCard
             imageURL={tanjiro}
             title="Animes"
@@ -92,27 +78,17 @@ export function Animes() {
             title="Animes"
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           />
-        </section>
-        <div className="flex items-center justify-center gap-3 mt-4 text-white">
-          <div className="bg-footer pt-3 pb-3 pr-4 pl-3 rounded-md">
-            <img src={left} alt="" className="" />
-          </div>
-          <div className="bg-footer text-center text-dark-blue pt-2 pb-2 pr-4 pl-3 border border-dark-blue rounded-md">
-            1
-          </div>
-          <div className="bg-footer text-center pt-2 pb-2 pr-4 pl-3 rounded-md">
-            2
-          </div>
-          <div className="bg-footer text-center pt-2 pb-2 pr-4 pl-3 rounded-md">
-            3
-          </div>
-          <div className="bg-footer text-center pt-2 pb-2 pr-4 pl-3 rounded-md">
-            4
-          </div>
-          <div className="bg-footer pt-3 pb-3 pr-4 pl-3 rounded-md">
-            <img src={right} alt="" />
-          </div>
-        </div>
+          <LatestNewsCard
+            imageURL={goku}
+            title="Animes"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          />
+          <LatestNewsCard
+            imageURL={goku}
+            title="Animes"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          />
+        </Slider>
       </main>
       <Footer />
     </AnimatedPage>
