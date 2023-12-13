@@ -62,7 +62,7 @@ export function Animes() {
           <SearchImage />
           <Searcher />
         </section>
-        <Slider className="mt-12" {...settings}>
+        <Slider {...settings}>
           <LatestNewsCard
             imageURL={tanjiro}
             title="Animes"
