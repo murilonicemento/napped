@@ -5,5 +5,5 @@ export const authAPI = axios.create({
 });
 
 export const newsAPI = axios.create({
-  baseURL: import.meta.env.VITE_API_NEWS_BASE_URL,
+  baseURL: import.meta.env.VITE_API_NEWSDATAIO_BASE_URL,
 });
