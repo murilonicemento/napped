@@ -22,7 +22,7 @@ export function Register() {
     } catch (error) {
       toast.error(`${error}`);
     }
-  }, [auth, navigate]);
+  }, []);
 
   useEffect(() => {
     validate();

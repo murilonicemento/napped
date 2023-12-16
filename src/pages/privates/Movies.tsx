@@ -31,7 +31,7 @@ export function Movies() {
 
       return setTimeout(() => navigate("/login"), 1200);
     }
-  }, [auth, navigate]);
+  }, []);
 
   useEffect(() => {
     validate();

@@ -22,7 +22,7 @@ export function Login() {
     } catch (error) {
       toast.error(`${error}`);
     }
-  }, [auth, navigate]);
+  }, []);
 
   useEffect(() => {
     validate();

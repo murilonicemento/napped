@@ -2,13 +2,12 @@ import { AxiosError } from "axios";
 import { useCallback, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import AnimatedPage from "../../animatedPage";
 import gojo from "../../assets/images/gojo-pfp.png";
 import { DeleteAlert } from "../../components/DeleteAlert";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { AuthContext } from "../../context/auth/AuthContext";
-
-import AnimatedPage from "../../animatedPage";
 import {
   UpdateAccountErrorAPI,
   ValidateTokenErrorAPI,
@@ -36,7 +35,7 @@ export function MyAccount() {
 
       return setTimeout(() => navigate("/login"), 1200);
     }
-  }, [auth, navigate]);
+  }, []);
 
   const handleUpdateAccount = async () => {
     const passwordRegex =
