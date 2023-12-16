@@ -83,18 +83,18 @@ export type AuthContextType = {
 };
 
 export interface ImageProps {
-  imageURL: string;
-  title: string;
-  subtitle?: string;
-  description: string;
+  imageURL: string | undefined;
+  type: string;
+  title: string | undefined;
+  description?: string;
 }
 
 export interface LatestNewsCardProps extends ImageProps {}
 
 export interface ReleaseCardProps {
   type: string;
-  title: string;
-  description: string;
+  title: string | undefined;
+  description: string | undefined;
 }
 
 export interface MenuItemProps {
@@ -103,4 +103,28 @@ export interface MenuItemProps {
   pathname: string;
   isButton: boolean;
   buttonColor: string | null;
+}
+
+export interface NewsDataIOResult {
+  article_id: string;
+  title: string;
+  link: string;
+  keywords: Array<string> | null;
+  creator: Array<string>;
+  video_url: string | null;
+  description: string;
+  content: string;
+  pubDate: string;
+  image_url: string;
+  source_id: string;
+  source_priority: number;
+  country: Array<string>;
+  category: Array<string>;
+  language: string;
+}
+export interface NewsDataIO {
+  nextPage: string;
+  results: Array<NewsDataIOResult>;
+  status: string;
+  totalResults: number;
 }
