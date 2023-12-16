@@ -2,19 +2,10 @@ import { AxiosError } from "axios";
 import { useCallback, useContext, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 import AnimatedPage from "../../animatedPage";
-import anime from "../../assets/images/animeLower.svg";
-import goku from "../../assets/images/goku.svg";
-import tanjiro from "../../assets/images/tanjiro.svg";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
-import { LatestNewsCard } from "../../components/LatestNewsCard";
-import { SearchImage } from "../../components/SearchImage";
-import { Searcher } from "../../components/Searcher";
+import { Search } from "../../components/Search";
 import { AuthContext } from "../../context/auth/AuthContext";
 import { ValidateTokenErrorAPI } from "../../utils/types";
 
@@ -47,104 +38,7 @@ export function Animes() {
     <AnimatedPage>
       <Header />
       <main className="w-10/12 m-auto mt-20">
-        <section className="flex flex-col gap-6">
-          <SearchImage />
-          <Searcher />
-        </section>
-        <Swiper
-          slidesPerView={1}
-          spaceBetween={10}
-          pagination={{
-            clickable: true,
-          }}
-          breakpoints={{
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 4,
-              spaceBetween: 40,
-            },
-            1024: {
-              slidesPerView: 5,
-              spaceBetween: 50,
-            },
-          }}
-          modules={[Pagination]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <LatestNewsCard
-              imageURL={tanjiro}
-              title="Animes"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <LatestNewsCard
-              imageURL={anime}
-              title="Animes"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <LatestNewsCard
-              imageURL={goku}
-              title="Animes"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <LatestNewsCard
-              imageURL={goku}
-              title="Animes"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <LatestNewsCard
-              imageURL={goku}
-              title="Animes"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <LatestNewsCard
-              imageURL={goku}
-              title="Animes"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <LatestNewsCard
-              imageURL={goku}
-              title="Animes"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <LatestNewsCard
-              imageURL={goku}
-              title="Animes"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <LatestNewsCard
-              imageURL={goku}
-              title="Animes"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <LatestNewsCard
-              imageURL={goku}
-              title="Animes"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-          </SwiperSlide>
-        </Swiper>
+        <Search title="Animes" />
       </main>
       <Footer />
     </AnimatedPage>
