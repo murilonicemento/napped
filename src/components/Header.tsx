@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/images/logo.svg";
-import { SideBar } from "./SideBar/SideBar.tsx";
+import { PopAnchor } from "./PopAnchor.tsx";
 
 export function Header() {
   const { pathname } = useLocation();
@@ -12,7 +12,7 @@ export function Header() {
           Napped
         </span>
       </Link>
-      {pathname !== "/login" && pathname !== "/register" && <SideBar />}
+      {pathname !== "/login" && pathname !== "/register" && <PopAnchor />}
     </header>
   );
 }
