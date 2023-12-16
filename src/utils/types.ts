@@ -2,8 +2,6 @@ export interface NavLinkProps {
   to: string;
   isActive: boolean;
   text: string;
-  isButton?: boolean;
-  buttonColor?: string | null;
 }
 
 export interface FormProps {
