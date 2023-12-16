@@ -2,7 +2,7 @@ import { ImageProps } from "../utils/types";
 
 export function Image({ imageURL, title, subtitle, description }: ImageProps) {
   return (
-    <div className="relative">
+    <div className="relative -z-10">
       <img
         src={imageURL}
         alt="Imagem"

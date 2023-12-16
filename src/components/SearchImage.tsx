@@ -2,7 +2,7 @@ import gojo from "../assets/images/gojo.png";
 
 export function SearchImage() {
   return (
-    <div className="filter brightness-75">
+    <div className="filter brightness-75 relative -z-10">
       <img
         src={gojo}
         alt="Imagem"
