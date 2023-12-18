@@ -1,5 +1,5 @@
 import { AxiosError } from "axios";
-import { useCallback, useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import AnimatedPage from "../../animatedPage";
@@ -7,11 +7,13 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Search } from "../../components/Search";
 import { AuthContext } from "../../context/auth/AuthContext";
-import { ValidateTokenErrorAPI } from "../../utils/types";
+import { newsAPI } from "../../services/api";
+import { NewsDataIO, ValidateTokenErrorAPI } from "../../utils/types";
 
 export function Movies() {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
+  const [moviesData, setMoviesData] = useState<NewsDataIO>();
 
   const validate = useCallback(async () => {
     try {
@@ -30,15 +32,29 @@ export function Movies() {
     }
   }, []);
 
+  const getDataAPI = useCallback(async () => {
+    try {
+      const moviesData = await newsAPI.get(
+        `/news?apikey=${
+          import.meta.env.VITE_API_NEWSDATAIO_KEY
+        }&q=animes&language=pt`
+      );
+
+      setMoviesData(moviesData.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
   useEffect(() => {
     validate();
-  }, [validate]);
+  }, [validate, getDataAPI]);
 
   return (
     <AnimatedPage>
       <Header />
       <main className="w-10/12 m-auto mt-20">
-        <Search title="Filmes" />
+        <Search type="Filmes" articles={moviesData} />
       </main>
       <Footer />
     </AnimatedPage>
