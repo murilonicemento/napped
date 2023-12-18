@@ -1,3 +1,4 @@
+import { ChakraProvider } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import { Route, Routes } from "react-router-dom";
 import { Login } from "./pages/Login.tsx";
@@ -13,6 +14,7 @@ import { Series } from "./pages/privates/Series.tsx";
 export function App() {
   return (
     <>
+      {/* <ChakraProvider> */}
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/register" element={<Register />} />
@@ -26,6 +28,7 @@ export function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
+      {/* </ChakraProvider> */}
     </>
   );
 }
