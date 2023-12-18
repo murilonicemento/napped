@@ -91,6 +91,11 @@ export interface ImageProps {
 
 export interface LatestNewsCardProps extends ImageProps {}
 
+export interface SearchProps {
+  type: string;
+  articles: NewsDataIO | undefined;
+}
+
 export interface ReleaseCardProps {
   type: string;
   title: string | undefined;
