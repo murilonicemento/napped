@@ -1,5 +1,5 @@
 import { AxiosError } from "axios";
-import { useCallback, useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import AnimatedPage from "../../animatedPage";
@@ -7,11 +7,13 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Search } from "../../components/Search";
 import { AuthContext } from "../../context/auth/AuthContext";
-import { ValidateTokenErrorAPI } from "../../utils/types";
+import { newsAPI } from "../../services/api";
+import { NewsDataIO, ValidateTokenErrorAPI } from "../../utils/types";
 
 export function Series() {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
+  const [seriesData, setSeriesData] = useState<NewsDataIO>();
 
   const validate = useCallback(async () => {
     try {
@@ -30,15 +32,29 @@ export function Series() {
     }
   }, []);
 
+  const getDataAPI = useCallback(async () => {
+    try {
+      const seriesData = await newsAPI.get(
+        `/news?apikey=${
+          import.meta.env.VITE_API_NEWSDATAIO_KEY
+        }&q=series&language=pt`
+      );
+
+      setSeriesData(seriesData.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
   useEffect(() => {
     validate();
-  }, [validate]);
+  }, [validate, getDataAPI]);
 
   return (
     <AnimatedPage>
       <Header />
       <main className="w-10/12 m-auto mt-20">
-        <Search title="Séries" />
+        <Search type="Séries" articles={seriesData} />
       </main>
       <Footer />
     </AnimatedPage>
