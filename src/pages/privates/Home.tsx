@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import AnimatedPage from "../../animatedPage";
-import chichiro from "../../assets/images/chichiro.svg";
-import goku from "../../assets/images/goku.svg";
-import kratos from "../../assets/images/kratos.svg";
-import naoko from "../../assets/images/naoko.svg";
-import tanjiro from "../../assets/images/tanjiro.svg";
-import viking from "../../assets/images/viking.svg";
+import cinemark from "../../assets/images/cinemark.png";
+import crunchyroll from "../../assets/images/crunchyroll.jpg";
+import netflixCard from "../../assets/images/netflix-card.jpeg";
+import netflix from "../../assets/images/netflix.jpeg";
+import playStation from "../../assets/images/play-station.jpeg";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Image } from "../../components/Image";
@@ -70,69 +69,75 @@ export function Home() {
       <main className="mt-12">
         <section className="w-10/12 m-auto flex flex-col gap-4">
           <Image
-            imageURL={
-              seriesData?.results[0].image_url
-                ? seriesData?.results[0].image_url
-                : viking
-            }
+            imageURL={netflix}
             type="Séries"
             title={seriesData?.results[0].title}
-            description={seriesData?.results[0].description}
+            description={`${seriesData?.results[0].description.substring(
+              0,
+              55
+            )}...`}
           />
           <div className="flex flex-col gap-4">
             <Image
-              imageURL={
-                gamesData?.results[0].image_url
-                  ? seriesData?.results[0].image_url
-                  : kratos
-              }
+              imageURL={playStation}
               type="Jogos"
-              title={gamesData?.results[0].title}
+              title={gamesData?.results[1].title}
             />
             <Image
-              imageURL={
-                animesData?.results[0].image_url
-                  ? seriesData?.results[0].image_url
-                  : chichiro
-              }
+              imageURL={crunchyroll}
               type="Animes"
-              title={animesData?.results[0].title}
+              title={animesData?.results[2].title}
             />
           </div>
         </section>
         <section className="w-10/12 flex flex-col gap-8 m-auto mt-28">
           <h2 className="text-white text-xl mb-12">Notícias mais recentes</h2>
           <LatestNewsCard
-            imageURL={tanjiro}
+            imageURL={cinemark}
             type="Filmes"
-            title={moviesData?.results[0].title}
-            description={moviesData?.results[0].description}
+            title={moviesData?.results[3].title}
+            description={`${moviesData?.results[3].description.substring(
+              0,
+              255
+            )}...`}
           />
           <LatestNewsCard
-            imageURL={naoko}
+            imageURL={crunchyroll}
             type="Animes"
-            title={animesData?.results[0].title}
-            description={animesData?.results[0].description}
+            title={animesData?.results[4].title}
+            description={`${animesData?.results[4].description.substring(
+              0,
+              255
+            )}...`}
           />
           <LatestNewsCard
-            imageURL={goku}
+            imageURL={netflixCard}
             type="Séries"
-            title={seriesData?.results[0].title}
-            description={seriesData?.results[0].description}
+            title={seriesData?.results[5].title}
+            description={`${seriesData?.results[5].description.substring(
+              0,
+              255
+            )}...`}
           />
         </section>
-        <section className="w-10/12 m-auto mt-28">
+        <section className="w-10/12 m-auto mt-28 pb-24">
           <h2 className="text-white text-xl mb-12">Lançamentos</h2>
           <div className="flex flex-col gap-8">
             <ReleaseCard
               type="Filmes"
-              title={moviesData?.results[0].title}
-              description={moviesData?.results[0].description}
+              title={moviesData?.results[6].title}
+              description={`${moviesData?.results[6].description.substring(
+                0,
+                255
+              )}...`}
             />
             <ReleaseCard
               type="Filmes"
-              title={moviesData?.results[0].title}
-              description={moviesData?.results[0].description}
+              title={moviesData?.results[7].title}
+              description={`${moviesData?.results[7].description.substring(
+                0,
+                255
+              )}...`}
             />
           </div>
         </section>
