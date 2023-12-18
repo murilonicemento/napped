@@ -2,18 +2,16 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import anime from "../assets/images/animeLower.svg";
-import goku from "../assets/images/goku.svg";
-import tanjiro from "../assets/images/tanjiro.svg";
+import { SearchProps } from "../utils/types";
 import { LatestNewsCard } from "./LatestNewsCard";
 import { SearchImage } from "./SearchImage";
 import { Searcher } from "./Searcher";
 
-export function Search({ title }: { title: string }) {
+export function Search({ type, articles }: SearchProps) {
   return (
     <>
       <section className="flex flex-col gap-6 mb-10">
-        <SearchImage title={title} />
+        <SearchImage type={type} />
         <Searcher />
       </section>
       <Swiper
@@ -39,76 +37,16 @@ export function Search({ title }: { title: string }) {
         modules={[Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <LatestNewsCard
-            imageURL={tanjiro}
-            title="Animes"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <LatestNewsCard
-            imageURL={anime}
-            title="Animes"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <LatestNewsCard
-            imageURL={goku}
-            title="Animes"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <LatestNewsCard
-            imageURL={goku}
-            title="Animes"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <LatestNewsCard
-            imageURL={goku}
-            title="Animes"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <LatestNewsCard
-            imageURL={goku}
-            title="Animes"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <LatestNewsCard
-            imageURL={goku}
-            title="Animes"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <LatestNewsCard
-            imageURL={goku}
-            title="Animes"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <LatestNewsCard
-            imageURL={goku}
-            title="Animes"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <LatestNewsCard
-            imageURL={goku}
-            title="Animes"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          />
-        </SwiperSlide>
+        {articles?.results.map((article) => (
+          <SwiperSlide key={article.article_id}>
+            <LatestNewsCard
+              imageURL={article.image_url}
+              type={type}
+              title={article.title}
+              description={article.description}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
   );
