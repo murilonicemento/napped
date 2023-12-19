@@ -12,7 +12,7 @@
 
 body {
   height: 100vh;
-  background-color: #09090b;
+  background-color: #09090b !important;
   outline: none;
   -webkit-tap-highlight-color: transparent;
   tap-highlight-color: transparent;

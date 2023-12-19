@@ -1,12 +1,12 @@
 import { AnimatePresence } from "framer-motion";
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
+import { Home } from "./pages/Home.tsx";
 import { Login } from "./pages/Login.tsx";
 import { NotFound } from "./pages/NotFound.tsx";
 import { Register } from "./pages/Register.tsx";
 import { Animes } from "./pages/privates/Animes.tsx";
 import { Games } from "./pages/privates/Games.tsx";
-import { Home } from "./pages/privates/Home.tsx";
 import { Movies } from "./pages/privates/Movies.tsx";
 import { MyAccount } from "./pages/privates/MyAccount.jsx";
 import { Series } from "./pages/privates/Series.tsx";

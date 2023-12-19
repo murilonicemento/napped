@@ -4,7 +4,6 @@ import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SearchProps } from "../utils/types";
 import { LatestNewsCard } from "./LatestNewsCard";
-import { Loading } from "./Loading";
 import { SearchImage } from "./SearchImage";
 import { Searcher } from "./Searcher";
 
@@ -38,7 +37,6 @@ export function Search({ type, articles }: SearchProps) {
         modules={[Pagination]}
         className="mySwiper"
       >
-        {articles?.results === undefined && <Loading />}
         {articles?.results.map((article) => (
           <SwiperSlide key={article.article_id}>
             <LatestNewsCard

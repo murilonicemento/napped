@@ -24,13 +24,13 @@ export function PopAnchor() {
   return (
     <Popover placement="left">
       <PopoverTrigger>
-        <Button className="flex gap-1 flex-col">
+        <Button className="flex gap-1 flex-col p-3 bg-dark-10 rounded-full">
           <div className="w-6 border border-b-2 border-dark-blue"></div>
           <div className="w-6 border border-b-2 border-dark-blue"></div>
           <div className="w-6 border border-b-2 border-dark-blue"></div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverContent className="relative">
         <PopoverBody className="w-80 mt-16 border border-none rounded-xl bg-dark-10 p-4">
           <nav className="flex flex-col gap-4 text-white mb-4">
             <NavLink to="/" isActive={pathname === "/"} text="Início" />
