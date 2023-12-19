@@ -1,5 +1,5 @@
-import { ChakraProvider } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
+import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import { Login } from "./pages/Login.tsx";
 import { NotFound } from "./pages/NotFound.tsx";
@@ -14,7 +14,6 @@ import { Series } from "./pages/privates/Series.tsx";
 export function App() {
   return (
     <>
-      {/* <ChakraProvider> */}
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/register" element={<Register />} />
@@ -28,7 +27,16 @@ export function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
-      {/* </ChakraProvider> */}
+      <Toaster
+        toastOptions={{
+          duration: 3000,
+          position: "top-center",
+          style: {
+            backgroundColor: "#151B26",
+            color: "#FEFBFB",
+          },
+        }}
+      />
     </>
   );
 }
