@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
+import AnimatedPage from "../animatedPage";
 import cinemark from "../assets/images/cinemark.png";
 import crunchyroll from "../assets/images/crunchyroll.jpg";
 import netflixCard from "../assets/images/netflix-card.jpeg";
 import netflix from "../assets/images/netflix.jpeg";
 import playStation from "../assets/images/play-station.jpeg";
-import AnimatedPage from "../animatedPage";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { Image } from "../components/Image";
