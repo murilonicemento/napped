@@ -83,7 +83,7 @@ export function RegisterForm() {
   return (
     <form
       action=""
-      className="flex flex-col items-center gap-4 p-8 mt-10 w-10/12 m-auto"
+      className="w-10/12 lg:w-96 flex flex-col items-center gap-4 p-8 mt-10 m-auto"
       onSubmit={handleSubmit}
     >
       <span className="text-transparent bg-clip-text bg-gradient-to-b from-brand to-dark-blue text-dark-blue text-xl">
