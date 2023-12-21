@@ -59,25 +59,24 @@ export function Home() {
     <AnimatedPage>
       <Header />
       <div className="w-10/12 m-auto mt-16 grid place-items-center text-white">
-        <h1 className="text-3xl">Mundo Nerd?</h1>
-        <h1 className="text-3xl">Napped</h1>
-        <p className="mt-8 text-center">
+        <h1 className="text-3xl md:text-4xl lg:text-6xl">Mundo Nerd?</h1>
+        <h1 className="text-3xl md:text-4xl lg:text-6xl">Napped</h1>
+        <p className="w-full lg:w-7/12 mt-8 text-center text-base md:text-lg lg:text-2xl">
           O Napped pode ser sua fonte de informações sobre o mundo nerd e outros
           assuntos relacionados.
         </p>
       </div>
       <main className="mt-12">
-        <section className="w-10/12 m-auto flex flex-col gap-4">
-          <Image
-            imageURL={netflix}
-            type="Séries"
-            title={seriesData?.results[0].title}
-            description={`${seriesData?.results[0].description.substring(
-              0,
-              55
-            )}...`}
-          />
-          <div className="flex flex-col gap-4">
+        <section className="w-10/12 m-auto flex flex-col lg:flex-row gap-4 sm:gap-8 md:gap-12">
+          <div className="w-full lg:w-1/2">
+            <Image
+              imageURL={netflix}
+              type="Séries"
+              title={seriesData?.results[0].title}
+              description={seriesData?.results[0].description}
+            />
+          </div>
+          <div className="w-full lg:w-1/2 flex flex-col gap-4 sm:gap-8">
             <Image
               imageURL={playStation}
               type="Jogos"
@@ -91,53 +90,44 @@ export function Home() {
           </div>
         </section>
         <section className="w-10/12 flex flex-col gap-8 m-auto mt-28">
-          <h2 className="text-white text-xl mb-12">Notícias mais recentes</h2>
-          <LatestNewsCard
-            imageURL={cinemark}
-            type="Filmes"
-            title={moviesData?.results[3].title}
-            description={`${moviesData?.results[3].description.substring(
-              0,
-              255
-            )}...`}
-          />
-          <LatestNewsCard
-            imageURL={crunchyroll}
-            type="Animes"
-            title={animesData?.results[4].title}
-            description={`${animesData?.results[4].description.substring(
-              0,
-              255
-            )}...`}
-          />
-          <LatestNewsCard
-            imageURL={netflixCard}
-            type="Séries"
-            title={seriesData?.results[5].title}
-            description={`${seriesData?.results[5].description.substring(
-              0,
-              255
-            )}...`}
-          />
+          <h2 className="text-white text-xl md:text-2xl lg:text-3xl mb-12">
+            Notícias mais recentes
+          </h2>
+          <div className="w-full h-fit lg:grid lg:grid-cols-3 lg:gap-28">
+            <LatestNewsCard
+              imageURL={cinemark}
+              type="Filmes"
+              title={moviesData?.results[3].title}
+              description={moviesData?.results[3].description}
+            />
+            <LatestNewsCard
+              imageURL={crunchyroll}
+              type="Animes"
+              title={animesData?.results[4].title}
+              description={animesData?.results[4].description}
+            />
+            <LatestNewsCard
+              imageURL={netflixCard}
+              type="Séries"
+              title={seriesData?.results[5].title}
+              description={seriesData?.results[5].description}
+            />
+          </div>
         </section>
         <section className="w-10/12 m-auto mt-28 pb-24">
-          <h2 className="text-white text-xl mb-12">Lançamentos</h2>
+          <h2 className="text-white text-xl md:text-2xl lg:text-3xl mb-12">
+            Lançamentos
+          </h2>
           <div className="flex flex-col gap-8">
             <ReleaseCard
               type="Filmes"
               title={moviesData?.results[6].title}
-              description={`${moviesData?.results[6].description.substring(
-                0,
-                255
-              )}...`}
+              description={moviesData?.results[6].description}
             />
             <ReleaseCard
               type="Filmes"
               title={moviesData?.results[7].title}
-              description={`${moviesData?.results[7].description.substring(
-                0,
-                255
-              )}...`}
+              description={moviesData?.results[7].description}
             />
           </div>
         </section>
