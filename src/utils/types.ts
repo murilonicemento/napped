@@ -84,12 +84,14 @@ export type AuthContextType = {
 
 export interface ImageProps {
   imageURL: string | undefined;
-  type: string;
+  type: string | undefined;
   title: string | undefined;
   description?: string;
 }
 
-export interface LatestNewsCardProps extends ImageProps {}
+export interface LatestNewsCardProps extends ImageProps {
+  id: string | undefined;
+}
 
 export interface SearchProps {
   type: string;
@@ -100,6 +102,7 @@ export interface ReleaseCardProps {
   type: string;
   title: string | undefined;
   description: string | undefined;
+  id: string | undefined;
 }
 
 export interface MenuItemProps {
