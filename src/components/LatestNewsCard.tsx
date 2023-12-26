@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LatestNewsCardProps } from "../utils/types";
 
 export function LatestNewsCard({
@@ -6,9 +6,18 @@ export function LatestNewsCard({
   type,
   title,
   description,
+  id,
 }: LatestNewsCardProps) {
+  const navigate = useNavigate();
+  const HandleOpenNotice = () => {
+    navigate(`/notice/${id}/${type}`);
+  };
+
   return (
-    <div className="w-full lg:w-96 border border-solid rounded border-dark-30 pb-8 mb-10">
+    <div
+      className="w-full lg:w-96 border border-solid rounded border-dark-30 pb-8 mb-10"
+      onClick={HandleOpenNotice}
+    >
       <img src={imageURL} alt="Image" className="" />
       <div className="w-10/12 m-auto mt-6">
         <h2 className="text-dark-blue uppercase text-base md:text-xl">

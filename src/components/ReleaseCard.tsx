@@ -1,9 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ReleaseCardProps } from "../utils/types";
 
-export function ReleaseCard({ type, title, description }: ReleaseCardProps) {
+export function ReleaseCard({
+  type,
+  title,
+  description,
+  id,
+}: ReleaseCardProps) {
+  const navigate = useNavigate();
+  const HandleOpenNotice = () => {
+    navigate(`/notice/${id}`);
+  };
+
   return (
-    <div>
+    <div onClick={HandleOpenNotice}>
       <h2 className="w-fit p-2 bg-gradient-to-b from-brand to-dark-blue text-white uppercase text-base md:text-xl rounded">
         {type}
       </h2>
