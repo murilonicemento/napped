@@ -99,18 +99,21 @@ export function Home() {
               type="Filmes"
               title={moviesData?.results[3].title}
               description={moviesData?.results[3].description}
+              id={moviesData?.results[3].article_id}
             />
             <LatestNewsCard
               imageURL={crunchyroll}
               type="Animes"
               title={animesData?.results[4].title}
               description={animesData?.results[4].description}
+              id={animesData?.results[4].article_id}
             />
             <LatestNewsCard
               imageURL={netflixCard}
               type="Séries"
               title={seriesData?.results[5].title}
               description={seriesData?.results[5].description}
+              id={seriesData?.results[5].article_id}
             />
           </div>
         </section>
@@ -123,11 +126,13 @@ export function Home() {
               type="Filmes"
               title={moviesData?.results[6].title}
               description={moviesData?.results[6].description}
+              id={moviesData?.results[6].article_id}
             />
             <ReleaseCard
               type="Filmes"
               title={moviesData?.results[7].title}
               description={moviesData?.results[7].description}
+              id={moviesData?.results[7].article_id}
             />
           </div>
         </section>
