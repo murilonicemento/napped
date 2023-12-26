@@ -9,6 +9,7 @@ import { Animes } from "./pages/privates/Animes.tsx";
 import { Games } from "./pages/privates/Games.tsx";
 import { Movies } from "./pages/privates/Movies.tsx";
 import { MyAccount } from "./pages/privates/MyAccount.jsx";
+import { Notice } from "./pages/privates/Notice.tsx";
 import { Series } from "./pages/privates/Series.tsx";
 
 export function App() {
@@ -24,6 +25,7 @@ export function App() {
           <Route path="/animes" element={<Animes />} />
           <Route path="/games" element={<Games />} />
           <Route path="/myaccount" element={<MyAccount />} />
+          <Route path="/notice/:id" element={<Notice />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
