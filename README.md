@@ -2,6 +2,8 @@
 
 Bem-vindo ao frontend do projeto Napped, uma fonte de informações sobre o mundo nerd e outros assuntos relacionados.
 
+<img src="./.github/napped.png">
+
 ## Descrição
 
 O frontend é construído com React e TypeScript para proporcionar uma experiência de usuário moderna e responsiva. Este projeto consome uma API desenvolvida com o Slim Framework.
