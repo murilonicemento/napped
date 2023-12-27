@@ -9,13 +9,14 @@ export function LatestNewsCard({
   id,
 }: LatestNewsCardProps) {
   const navigate = useNavigate();
+
   const HandleOpenNotice = () => {
-    navigate(`/notice/${id}/${type}`);
+    navigate(`/notice/${type?.toLowerCase()}/${id}`);
   };
 
   return (
     <div
-      className="w-full lg:w-96 border border-solid rounded border-dark-30 pb-8 mb-10"
+      className="w-full lg:w-96 border border-solid rounded border-dark-30 pb-8 mb-10 transition-transform transform hover:scale-110"
       onClick={HandleOpenNotice}
     >
       <img src={imageURL} alt="Image" className="" />
