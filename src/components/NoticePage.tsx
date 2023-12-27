@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import AnimatedPage from "../animatedPage";
-import cinemark from "../assets/images/cinemark.png";
-import crunchyroll from "../assets/images/crunchyroll.jpg";
-import netflixCard from "../assets/images/netflix-card.jpeg";
+import netflix from "../assets/images/netflix.jpeg";
 import { newsAPI } from "../services/api";
 import { NewsDataIO, NewsDataIOResult } from "../utils/types";
 import { LatestNewsCard } from "./LatestNewsCard";
@@ -23,8 +23,8 @@ export function NoticePage() {
 
       setData(noticeData.data);
 
-      const article = noticeData.data?.results.find(
-        (article: NewsDataIOResult) => article.article_id === id
+      const article = data?.results.find(
+        (article: NewsDataIOResult) => article.article_id == id
       );
 
       setArticle(article);
@@ -35,7 +35,7 @@ export function NoticePage() {
 
   useEffect(() => {
     getDataAPI();
-  });
+  }, [getDataAPI]);
 
   return (
     <AnimatedPage>
@@ -50,35 +50,48 @@ export function NoticePage() {
       </div>
       <main className="w-10/12 m-auto">
         <section className="flex flex-col gap-6">
-          <img
-            src={article?.image_url}
-            alt="Girl looking with her left hand holding her straw hat as the wind blows."
-          />
+          <img src={article?.image_url} alt="Article Image" />
           <p className="text-dark-40 text-sm text-center">{}</p>
         </section>
         <section className="mt-12 flex flex-col gap-6">
           <h2 className="text-white">Outras notícias parecidos</h2>
-          <LatestNewsCard
-            imageURL={cinemark}
-            type={type}
-            title={data?.results[3].title}
-            description={data?.results[3].description}
-            id={data?.results[3].article_id}
-          />
-          <LatestNewsCard
-            imageURL={crunchyroll}
-            type={type}
-            title={data?.results[4].title}
-            description={data?.results[4].description}
-            id={data?.results[4].article_id}
-          />
-          <LatestNewsCard
-            imageURL={netflixCard}
-            type={type}
-            title={data?.results[5].title}
-            description={data?.results[5].description}
-            id={data?.results[5].article_id}
-          />
+          <div className="pb-12">
+            <Swiper
+              slidesPerView={1}
+              spaceBetween={10}
+              pagination={{
+                clickable: true,
+              }}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 4,
+                  spaceBetween: 40,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 20,
+                },
+              }}
+              modules={[Pagination]}
+              className="mySwiper"
+            >
+              {data?.results.map((article) => (
+                <SwiperSlide key={article.article_id}>
+                  <LatestNewsCard
+                    imageURL={netflix}
+                    type={type}
+                    title={article.title}
+                    description={article.description}
+                    id={article.article_id}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </section>
       </main>
     </AnimatedPage>
