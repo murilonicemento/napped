@@ -87,6 +87,7 @@ export interface ImageProps {
   type: string | undefined;
   title: string | undefined;
   description?: string;
+  id: string | undefined;
 }
 
 export interface LatestNewsCardProps extends ImageProps {
