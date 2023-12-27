@@ -25,7 +25,7 @@ export function App() {
           <Route path="/animes" element={<Animes />} />
           <Route path="/games" element={<Games />} />
           <Route path="/myaccount" element={<MyAccount />} />
-          <Route path="/notice/:id/:type" element={<Notice />} />
+          <Route path="/notice/:type/:id" element={<Notice />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
