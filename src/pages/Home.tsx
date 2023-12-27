@@ -39,7 +39,7 @@ export function Home() {
       const moviesData = await newsAPI.get(
         `/news?apikey=${
           import.meta.env.VITE_API_NEWSDATAIO_KEY
-        }&q=animes&language=pt`
+        }&q=filmes&language=pt`
       );
 
       setSeriesData(seriesData.data);
@@ -74,6 +74,7 @@ export function Home() {
               type="Séries"
               title={seriesData?.results[0].title}
               description={seriesData?.results[0].description}
+              id={seriesData?.results[0].article_id}
             />
           </div>
           <div className="w-full lg:w-1/2 flex flex-col gap-4 sm:gap-8">
@@ -81,11 +82,13 @@ export function Home() {
               imageURL={playStation}
               type="Jogos"
               title={gamesData?.results[1].title}
+              id={gamesData?.results[1].article_id}
             />
             <Image
               imageURL={crunchyroll}
               type="Animes"
               title={animesData?.results[2].title}
+              id={animesData?.results[2].article_id}
             />
           </div>
         </section>
