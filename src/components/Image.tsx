@@ -1,8 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import { ImageProps } from "../utils/types";
 
-export function Image({ imageURL, title, type, description }: ImageProps) {
+export function Image({ imageURL, title, type, description, id }: ImageProps) {
+  const navigate = useNavigate();
+
+  const HandleOpenNotice = () => {
+    navigate(`/notice/${type?.toLowerCase()}/${id}`);
+  };
+
   return (
-    <div className="relative -z-10">
+    <div className="relative -z-10" onClick={HandleOpenNotice}>
       <img
         src={imageURL}
         alt="Imagem"
