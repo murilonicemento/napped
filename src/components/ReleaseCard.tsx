@@ -8,12 +8,16 @@ export function ReleaseCard({
   id,
 }: ReleaseCardProps) {
   const navigate = useNavigate();
+
   const HandleOpenNotice = () => {
-    navigate(`/notice/${id}`);
+    navigate(`/notice/${type?.toLowerCase()}/${id}`);
   };
 
   return (
-    <div onClick={HandleOpenNotice}>
+    <div
+      className="transition-transform transform hover:scale-110"
+      onClick={HandleOpenNotice}
+    >
       <h2 className="w-fit p-2 bg-gradient-to-b from-brand to-dark-blue text-white uppercase text-base md:text-xl rounded">
         {type}
       </h2>
