@@ -44,6 +44,7 @@ export function Search({ type, articles }: SearchProps) {
               type={type}
               title={article.title}
               description={article.description}
+              id={article.article_id}
             />
           </SwiperSlide>
         ))}
