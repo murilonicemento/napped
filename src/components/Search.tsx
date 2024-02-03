@@ -37,14 +37,14 @@ export function Search({ type, articles }: SearchProps) {
         modules={[Pagination]}
         className="mySwiper"
       >
-        {articles?.results.map((article) => (
-          <SwiperSlide key={article.article_id}>
+        {articles?.articles.map((article) => (
+          <SwiperSlide key={article.source.id}>
             <LatestNewsCard
-              imageURL={article.image_url}
+              imageURL={article.urlToImage}
               type={type}
               title={article.title}
               description={article.description}
-              id={article.article_id}
+              id={article.source.id}
             />
           </SwiperSlide>
         ))}

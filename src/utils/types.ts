@@ -120,7 +120,7 @@ export interface NewsAPI {
   articles: Array<NewsAPIArticles>;
 }
 
-interface NewsAPIArticles {
+export interface NewsAPIArticles {
   source: NewsAPISource;
   author: string;
   title: string;

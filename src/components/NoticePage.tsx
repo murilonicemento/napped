@@ -5,12 +5,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import AnimatedPage from "../animatedPage";
 import netflix from "../assets/images/netflix.jpeg";
 import { newsAPI } from "../services/api";
-import { NewsDataIO, NewsDataIOResult } from "../utils/types";
+import { NewsAPI, NewsAPIArticles } from "../utils/types";
 import { LatestNewsCard } from "./LatestNewsCard";
 
 export function NoticePage() {
-  const [data, setData] = useState<NewsDataIO>();
-  const [article, setArticle] = useState<NewsDataIOResult>();
+  const [data, setData] = useState<NewsAPI>();
+  const [article, setArticle] = useState<NewsAPIArticles>();
   const { id, type } = useParams();
 
   const getDataAPI = useCallback(async () => {
@@ -23,8 +23,8 @@ export function NoticePage() {
 
       setData(noticeData.data);
 
-      const article = data?.results.find(
-        (article: NewsDataIOResult) => article.article_id == id
+      const article = data?.articles.find(
+        (article: NewsAPIArticles) => article.source.id == id
       );
 
       setArticle(article);
@@ -50,8 +50,7 @@ export function NoticePage() {
       </div>
       <main className="w-10/12 m-auto">
         <section className="flex flex-col gap-6">
-          <img src={article?.image_url} alt="Article Image" />
-          <p className="text-dark-40 text-sm text-center">{}</p>
+          <img src={article?.urlToImage} alt="Article Image" />
         </section>
         <section className="mt-12 flex flex-col gap-6">
           <h2 className="text-white">Outras notícias parecidos</h2>
@@ -79,14 +78,14 @@ export function NoticePage() {
               modules={[Pagination]}
               className="mySwiper"
             >
-              {data?.results.map((article) => (
-                <SwiperSlide key={article.article_id}>
+              {data?.articles.map((article) => (
+                <SwiperSlide key={article.source.id}>
                   <LatestNewsCard
                     imageURL={netflix}
                     type={type}
                     title={article.title}
                     description={article.description}
-                    id={article.article_id}
+                    id={article.source.id}
                   />
                 </SwiperSlide>
               ))}

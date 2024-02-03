@@ -8,12 +8,12 @@ import { Header } from "../../components/Header";
 import { Search } from "../../components/Search";
 import { AuthContext } from "../../context/auth/AuthContext";
 import { newsAPI } from "../../services/api";
-import { NewsDataIO, ValidateTokenErrorAPI } from "../../utils/types";
+import { NewsAPI, ValidateTokenErrorAPI } from "../../utils/types";
 
 export function Movies() {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
-  const [moviesData, setMoviesData] = useState<NewsDataIO>();
+  const [moviesData, setMoviesData] = useState<NewsAPI>();
 
   const validate = useCallback(async () => {
     try {
