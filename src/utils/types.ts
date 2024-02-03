@@ -96,7 +96,7 @@ export interface LatestNewsCardProps extends ImageProps {
 
 export interface SearchProps {
   type: string;
-  articles: NewsDataIO | undefined;
+  articles: NewsAPI | undefined;
 }
 
 export interface ReleaseCardProps {
@@ -114,26 +114,21 @@ export interface MenuItemProps {
   buttonColor: string | null;
 }
 
-export interface NewsDataIOResult {
-  article_id: string;
-  title: string;
-  link: string;
-  keywords: Array<string> | null;
-  creator: Array<string>;
-  video_url: string | null;
-  description: string;
-  content: string;
-  pubDate: string;
-  image_url: string;
-  source_id: string;
-  source_priority: number;
-  country: Array<string>;
-  category: Array<string>;
-  language: string;
-}
-export interface NewsDataIO {
-  nextPage: string;
-  results: Array<NewsDataIOResult>;
+export interface NewsAPI {
   status: string;
   totalResults: number;
+  articles: Array<NewsAPIArticles>;
 }
+
+interface NewsAPIArticles {
+  source: NewsAPISource;
+  author: string;
+  title: string;
+  description: string;
+  url: string;
+  urlToImage: string;
+  publishedAt: string;
+  content: string;
+}
+
+type NewsAPISource = { id: string; name: string };

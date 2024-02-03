@@ -1,44 +1,39 @@
 import { useCallback, useEffect, useState } from "react";
 import AnimatedPage from "../animatedPage";
-import cinemark from "../assets/images/cinemark.png";
-import crunchyroll from "../assets/images/crunchyroll.jpg";
-import netflixCard from "../assets/images/netflix-card.jpeg";
-import netflix from "../assets/images/netflix.jpeg";
-import playStation from "../assets/images/play-station.jpeg";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { Image } from "../components/Image";
 import { LatestNewsCard } from "../components/LatestNewsCard";
 import { ReleaseCard } from "../components/ReleaseCard";
 import { newsAPI } from "../services/api";
-import { NewsDataIO } from "../utils/types";
+import { NewsAPI } from "../utils/types";
 
 export function Home() {
-  const [seriesData, setSeriesData] = useState<NewsDataIO>();
-  const [gamesData, setGamesData] = useState<NewsDataIO>();
-  const [animesData, setAnimesData] = useState<NewsDataIO>();
-  const [moviesData, setMoviesData] = useState<NewsDataIO>();
+  const [seriesData, setSeriesData] = useState<NewsAPI>();
+  const [gamesData, setGamesData] = useState<NewsAPI>();
+  const [animesData, setAnimesData] = useState<NewsAPI>();
+  const [moviesData, setMoviesData] = useState<NewsAPI>();
 
   const getDataAPI = useCallback(async () => {
     try {
       const seriesData = await newsAPI.get(
-        `/news?apikey=${
-          import.meta.env.VITE_API_NEWSDATAIO_KEY
+        `/everything?q=series&apikey=${
+          import.meta.env.VITE_API_NEWSAPI_KEY
         }&q=series&language=pt`
       );
       const gamesData = await newsAPI.get(
-        `/news?apikey=${
-          import.meta.env.VITE_API_NEWSDATAIO_KEY
+        `/everything?q=games&apikey=${
+          import.meta.env.VITE_API_NEWSAPI_KEY
         }&q=game&language=pt`
       );
       const animesData = await newsAPI.get(
-        `/news?apikey=${
-          import.meta.env.VITE_API_NEWSDATAIO_KEY
+        `/everything?q=animes&apikey=${
+          import.meta.env.VITE_API_NEWSAPI_KEY
         }&q=animes&language=pt`
       );
       const moviesData = await newsAPI.get(
-        `/news?apikey=${
-          import.meta.env.VITE_API_NEWSDATAIO_KEY
+        `/everything?q=movies&apikey=${
+          import.meta.env.VITE_API_NEWSAPI_KEY
         }&q=filmes&language=pt`
       );
 
@@ -70,25 +65,25 @@ export function Home() {
         <section className="w-10/12 m-auto flex flex-col lg:flex-row gap-4 sm:gap-8 md:gap-12">
           <div className="w-full lg:w-1/2">
             <Image
-              imageURL={netflix}
+              imageURL={seriesData?.articles[0].urlToImage}
               type="Séries"
-              title={seriesData?.results[0].title}
-              description={seriesData?.results[0].description}
-              id={seriesData?.results[0].article_id}
+              title={seriesData?.articles[0].title}
+              description={seriesData?.articles[0].description}
+              id={seriesData?.articles[0].source.id}
             />
           </div>
           <div className="w-full lg:w-1/2 flex flex-col gap-4 sm:gap-8">
             <Image
-              imageURL={playStation}
+              imageURL={gamesData?.articles[1].urlToImage}
               type="Jogos"
-              title={gamesData?.results[1].title}
-              id={gamesData?.results[1].article_id}
+              title={gamesData?.articles[1].title}
+              id={gamesData?.articles[1].source.id}
             />
             <Image
-              imageURL={crunchyroll}
+              imageURL={animesData?.articles[2].urlToImage}
               type="Animes"
-              title={animesData?.results[2].title}
-              id={animesData?.results[2].article_id}
+              title={animesData?.articles[2].title}
+              id={animesData?.articles[2].source.id}
             />
           </div>
         </section>
@@ -98,25 +93,25 @@ export function Home() {
           </h2>
           <div className="w-full h-fit lg:grid lg:grid-cols-3 lg:gap-28">
             <LatestNewsCard
-              imageURL={cinemark}
+              imageURL={moviesData?.articles[3].urlToImage}
               type="Filmes"
-              title={moviesData?.results[3].title}
-              description={moviesData?.results[3].description}
-              id={moviesData?.results[3].article_id}
+              title={moviesData?.articles[3].title}
+              description={moviesData?.articles[3].description}
+              id={moviesData?.articles[3].source.id}
             />
             <LatestNewsCard
-              imageURL={crunchyroll}
+              imageURL={animesData?.articles[4].urlToImage}
               type="Animes"
-              title={animesData?.results[4].title}
-              description={animesData?.results[4].description}
-              id={animesData?.results[4].article_id}
+              title={animesData?.articles[4].title}
+              description={animesData?.articles[4].description}
+              id={animesData?.articles[4].source.id}
             />
             <LatestNewsCard
-              imageURL={netflixCard}
+              imageURL={seriesData?.articles[5].urlToImage}
               type="Séries"
-              title={seriesData?.results[5].title}
-              description={seriesData?.results[5].description}
-              id={seriesData?.results[5].article_id}
+              title={seriesData?.articles[5].title}
+              description={seriesData?.articles[5].description}
+              id={seriesData?.articles[5].source.id}
             />
           </div>
         </section>
@@ -127,15 +122,15 @@ export function Home() {
           <div className="flex flex-col gap-8">
             <ReleaseCard
               type="Filmes"
-              title={moviesData?.results[6].title}
-              description={moviesData?.results[6].description}
-              id={moviesData?.results[6].article_id}
+              title={moviesData?.articles[6].title}
+              description={moviesData?.articles[6].description}
+              id={moviesData?.articles[6].source.id}
             />
             <ReleaseCard
               type="Filmes"
-              title={moviesData?.results[7].title}
-              description={moviesData?.results[7].description}
-              id={moviesData?.results[7].article_id}
+              title={moviesData?.articles[7].title}
+              description={moviesData?.articles[7].description}
+              id={moviesData?.articles[7].source.id}
             />
           </div>
         </section>
