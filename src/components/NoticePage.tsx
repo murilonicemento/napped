@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import AnimatedPage from "../animatedPage";
-import netflix from "../assets/images/netflix.jpeg";
 import { newsAPI } from "../services/api";
 import { NewsAPI, NewsAPIArticles } from "../utils/types";
 import { LatestNewsCard } from "./LatestNewsCard";
@@ -81,7 +80,7 @@ export function NoticePage() {
               {data?.articles.map((article) => (
                 <SwiperSlide key={article.source.id}>
                   <LatestNewsCard
-                    imageURL={netflix}
+                    imageURL={article.urlToImage}
                     type={type}
                     title={article.title}
                     description={article.description}
